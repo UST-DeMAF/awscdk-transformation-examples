@@ -1,0 +1,13 @@
+# deps
+node_modules
+
+# cdk build output
+*.js
+*.d.ts
+*.js.map
+.cdk.staging
+
+# artifacts not needed as transformation input
+cdk.out/asset.*
+cdk.out/*.assets.json
+cdk.out/*.zip
