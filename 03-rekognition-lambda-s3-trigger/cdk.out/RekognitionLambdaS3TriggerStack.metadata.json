@@ -1,0 +1,610 @@
+{
+  "/RekognitionLambdaS3TriggerStack": [
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "<anonymous> (/Users/andy/File Manager/thesis/awscdk-transformation-examples/03-rekognition-lambda-s3-trigger/bin/rekognition-lambda-s3-trigger.ts:7:1)",
+        "...node internals, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RekognitionLambdaS3TriggerStack/Bucket": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": {
+        "removalPolicy": "destroy",
+        "autoDeleteObjects": true
+      }
+    }
+  ],
+  "/RekognitionLambdaS3TriggerStack/Custom::S3AutoDeleteObjectsCustomResourceProvider": [
+    {
+      "type": "aws:cdk:is-custom-resource-handler-customResourceProvider",
+      "data": true
+    }
+  ],
+  "/RekognitionLambdaS3TriggerStack/Classifications": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": {
+        "partitionKey": {
+          "name": "*",
+          "type": "S"
+        },
+        "removalPolicy": "destroy"
+      }
+    }
+  ],
+  "/RekognitionLambdaS3TriggerStack/RekFunction": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": {
+        "handler": "*",
+        "runtime": "*",
+        "code": "*",
+        "environment": "*"
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "addEnvironment": [
+          "*",
+          "*"
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "addEnvironment": [
+          "*",
+          "*"
+        ]
+      }
+    }
+  ],
+  "/RekognitionLambdaS3TriggerStack/UploadImageToS3": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "UploadImageToS3"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new RekognitionLambdaS3TriggerStack (/Users/andy/File Manager/thesis/awscdk-transformation-examples/03-rekognition-lambda-s3-trigger/lib/rekognition-lambda-s3-trigger-stack.ts:55:3)",
+        "<anonymous> (/Users/andy/File Manager/thesis/awscdk-transformation-examples/03-rekognition-lambda-s3-trigger/bin/rekognition-lambda-s3-trigger.ts:7:1)",
+        "...node internals, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RekognitionLambdaS3TriggerStack/DynamoDBTable": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DynamoDBTable"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new RekognitionLambdaS3TriggerStack (/Users/andy/File Manager/thesis/awscdk-transformation-examples/03-rekognition-lambda-s3-trigger/lib/rekognition-lambda-s3-trigger-stack.ts:59:5)",
+        "<anonymous> (/Users/andy/File Manager/thesis/awscdk-transformation-examples/03-rekognition-lambda-s3-trigger/bin/rekognition-lambda-s3-trigger.ts:7:1)",
+        "...node internals, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RekognitionLambdaS3TriggerStack/LambdaFunction": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LambdaFunction"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new RekognitionLambdaS3TriggerStack (/Users/andy/File Manager/thesis/awscdk-transformation-examples/03-rekognition-lambda-s3-trigger/lib/rekognition-lambda-s3-trigger-stack.ts:63:5)",
+        "<anonymous> (/Users/andy/File Manager/thesis/awscdk-transformation-examples/03-rekognition-lambda-s3-trigger/bin/rekognition-lambda-s3-trigger.ts:7:1)",
+        "...node internals, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RekognitionLambdaS3TriggerStack/LambdaFunctionLogs": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LambdaFunctionLogs"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new RekognitionLambdaS3TriggerStack (/Users/andy/File Manager/thesis/awscdk-transformation-examples/03-rekognition-lambda-s3-trigger/lib/rekognition-lambda-s3-trigger-stack.ts:66:5)",
+        "<anonymous> (/Users/andy/File Manager/thesis/awscdk-transformation-examples/03-rekognition-lambda-s3-trigger/bin/rekognition-lambda-s3-trigger.ts:7:1)",
+        "...node internals, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RekognitionLambdaS3TriggerStack/BootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BootstrapVersion"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib...",
+        "(no user code in 10 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/RekognitionLambdaS3TriggerStack/CheckBootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CheckBootstrapVersion"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib...",
+        "(no user code in 10 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/RekognitionLambdaS3TriggerStack/Bucket/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "Bucket83908E77"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Bucket2 in aws-cdk-lib...",
+        "new RekognitionLambdaS3TriggerStack (/Users/andy/File Manager/thesis/awscdk-transformation-examples/03-rekognition-lambda-s3-trigger/lib/rekognition-lambda-s3-trigger-stack.ts:15:20)",
+        "<anonymous> (/Users/andy/File Manager/thesis/awscdk-transformation-examples/03-rekognition-lambda-s3-trigger/bin/rekognition-lambda-s3-trigger.ts:7:1)",
+        "...node internals, ts-node, ts-node..."
+      ]
+    },
+    {
+      "type": "aws:cdk:analytics:mixin",
+      "data": {
+        "mixin": "aws-cdk-lib.aws_s3.mixins.BucketAutoDeleteObjects"
+      }
+    }
+  ],
+  "/RekognitionLambdaS3TriggerStack/Bucket/Policy": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": {
+        "bucket": "*"
+      }
+    }
+  ],
+  "/RekognitionLambdaS3TriggerStack/Bucket/AutoDeleteObjectsCustomResource": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": "*"
+    }
+  ],
+  "/RekognitionLambdaS3TriggerStack/Bucket/AllowBucketNotificationsToRekognitionLambdaS3TriggerStackRekFunction8330C879": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BucketAllowBucketNotificationsToRekognitionLambdaS3TriggerStackRekFunction8330C87915B3782A"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addEventNotification in aws-cdk-lib...",
+        "new RekognitionLambdaS3TriggerStack (/Users/andy/File Manager/thesis/awscdk-transformation-examples/03-rekognition-lambda-s3-trigger/lib/rekognition-lambda-s3-trigger-stack.ts:48:12)",
+        "<anonymous> (/Users/andy/File Manager/thesis/awscdk-transformation-examples/03-rekognition-lambda-s3-trigger/bin/rekognition-lambda-s3-trigger.ts:7:1)",
+        "...node internals, ts-node..."
+      ]
+    }
+  ],
+  "/RekognitionLambdaS3TriggerStack/Custom::S3AutoDeleteObjectsCustomResourceProvider/Role": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib...",
+        "(no user code in 10 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/RekognitionLambdaS3TriggerStack/Custom::S3AutoDeleteObjectsCustomResourceProvider/Handler": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CustomS3AutoDeleteObjectsCustomResourceProviderHandler9D90184F"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib...",
+        "(no user code in 10 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/RekognitionLambdaS3TriggerStack/Classifications/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "Classifications0C921F6C"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Table2 in aws-cdk-lib...",
+        "new RekognitionLambdaS3TriggerStack (/Users/andy/File Manager/thesis/awscdk-transformation-examples/03-rekognition-lambda-s3-trigger/lib/rekognition-lambda-s3-trigger-stack.ts:21:19)",
+        "<anonymous> (/Users/andy/File Manager/thesis/awscdk-transformation-examples/03-rekognition-lambda-s3-trigger/bin/rekognition-lambda-s3-trigger.ts:7:1)",
+        "...node internals, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RekognitionLambdaS3TriggerStack/Classifications/ScalingRole": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": "*"
+    }
+  ],
+  "/RekognitionLambdaS3TriggerStack/RekFunction/ServiceRole": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": {
+        "assumedBy": {
+          "principalAccount": "*",
+          "assumeRoleAction": "*"
+        },
+        "managedPolicies": [
+          {
+            "managedPolicyArn": "*"
+          }
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "addToPrincipalPolicy": [
+          {}
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "attachInlinePolicy": [
+          "*"
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "attachInlinePolicy": [
+          "*"
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "addToPrincipalPolicy": [
+          {}
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "addToPrincipalPolicy": [
+          {}
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "addToPrincipalPolicy": [
+          {}
+        ]
+      }
+    }
+  ],
+  "/RekognitionLambdaS3TriggerStack/RekFunction/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RekFunction9837D13D"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Function2 in aws-cdk-lib...",
+        "new RekognitionLambdaS3TriggerStack (/Users/andy/File Manager/thesis/awscdk-transformation-examples/03-rekognition-lambda-s3-trigger/lib/rekognition-lambda-s3-trigger-stack.ts:31:28)",
+        "<anonymous> (/Users/andy/File Manager/thesis/awscdk-transformation-examples/03-rekognition-lambda-s3-trigger/bin/rekognition-lambda-s3-trigger.ts:7:1)",
+        "...node internals, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RekognitionLambdaS3TriggerStack/RekFunction/LogGroup": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": {
+        "logGroupName": "*"
+      }
+    }
+  ],
+  "/RekognitionLambdaS3TriggerStack/BucketNotificationsHandler050a0587b7544547bf325f094a3db834/Role": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": {
+        "assumedBy": {
+          "principalAccount": "*",
+          "assumeRoleAction": "*"
+        }
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "addManagedPolicy": [
+          {
+            "managedPolicyArn": "*"
+          }
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "attachInlinePolicy": [
+          "*"
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "attachInlinePolicy": [
+          "*"
+        ]
+      }
+    }
+  ],
+  "/RekognitionLambdaS3TriggerStack/BucketNotificationsHandler050a0587b7544547bf325f094a3db834/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BucketNotificationsHandler050a0587b7544547bf325f094a3db8347ECC3691"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addEventNotification in aws-cdk-lib...",
+        "new RekognitionLambdaS3TriggerStack (/Users/andy/File Manager/thesis/awscdk-transformation-examples/03-rekognition-lambda-s3-trigger/lib/rekognition-lambda-s3-trigger-stack.ts:48:12)",
+        "<anonymous> (/Users/andy/File Manager/thesis/awscdk-transformation-examples/03-rekognition-lambda-s3-trigger/bin/rekognition-lambda-s3-trigger.ts:7:1)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/RekognitionLambdaS3TriggerStack/CDKMetadata/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadata"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib, node internals...",
+        "(no user code in 10 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/RekognitionLambdaS3TriggerStack/Bucket/Policy/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BucketPolicyE9A3008A"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Bucket2 in aws-cdk-lib...",
+        "new RekognitionLambdaS3TriggerStack (/Users/andy/File Manager/thesis/awscdk-transformation-examples/03-rekognition-lambda-s3-trigger/lib/rekognition-lambda-s3-trigger-stack.ts:15:20)",
+        "<anonymous> (/Users/andy/File Manager/thesis/awscdk-transformation-examples/03-rekognition-lambda-s3-trigger/bin/rekognition-lambda-s3-trigger.ts:7:1)",
+        "...node internals..."
+      ]
+    },
+    {
+      "type": "aws:cdk:analytics:mixin",
+      "data": {
+        "mixin": "aws-cdk-lib.aws_s3.mixins.BucketPolicyStatements"
+      }
+    }
+  ],
+  "/RekognitionLambdaS3TriggerStack/Bucket/AutoDeleteObjectsCustomResource/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BucketAutoDeleteObjectsCustomResourceBAFD23C2"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib...",
+        "(no user code in 10 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/RekognitionLambdaS3TriggerStack/Bucket/Notifications/HandlerPolicy": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": {
+        "statements": "*"
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "addStatements": [
+          {}
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "attachToRole": [
+          "*"
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "attachToRole": [
+          "*"
+        ]
+      }
+    }
+  ],
+  "/RekognitionLambdaS3TriggerStack/Bucket/Notifications/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BucketNotifications8F2E257D"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addEventNotification in aws-cdk-lib...",
+        "new RekognitionLambdaS3TriggerStack (/Users/andy/File Manager/thesis/awscdk-transformation-examples/03-rekognition-lambda-s3-trigger/lib/rekognition-lambda-s3-trigger-stack.ts:48:12)",
+        "<anonymous> (/Users/andy/File Manager/thesis/awscdk-transformation-examples/03-rekognition-lambda-s3-trigger/bin/rekognition-lambda-s3-trigger.ts:7:1)",
+        "...node internals, ts-node..."
+      ]
+    }
+  ],
+  "/RekognitionLambdaS3TriggerStack/RekFunction/ServiceRole/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RekFunctionServiceRole3947AEF4"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Function2 in aws-cdk-lib...",
+        "new RekognitionLambdaS3TriggerStack (/Users/andy/File Manager/thesis/awscdk-transformation-examples/03-rekognition-lambda-s3-trigger/lib/rekognition-lambda-s3-trigger-stack.ts:31:28)",
+        "<anonymous> (/Users/andy/File Manager/thesis/awscdk-transformation-examples/03-rekognition-lambda-s3-trigger/bin/rekognition-lambda-s3-trigger.ts:7:1)",
+        "...node internals, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RekognitionLambdaS3TriggerStack/RekFunction/ServiceRole/DefaultPolicy": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": "*"
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "attachToRole": [
+          "*"
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "attachToRole": [
+          "*"
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "addStatements": [
+          {}
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "addStatements": [
+          {}
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "addStatements": [
+          {}
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "addStatements": [
+          {}
+        ]
+      }
+    }
+  ],
+  "/RekognitionLambdaS3TriggerStack/RekFunction/Code/AssetBucket": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": "*"
+    }
+  ],
+  "/RekognitionLambdaS3TriggerStack/RekFunction/LogGroup/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RekFunctionLogGroupAB0F1ED7"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Function2 in aws-cdk-lib...",
+        "new RekognitionLambdaS3TriggerStack (/Users/andy/File Manager/thesis/awscdk-transformation-examples/03-rekognition-lambda-s3-trigger/lib/rekognition-lambda-s3-trigger-stack.ts:31:28)",
+        "<anonymous> (/Users/andy/File Manager/thesis/awscdk-transformation-examples/03-rekognition-lambda-s3-trigger/bin/rekognition-lambda-s3-trigger.ts:7:1)",
+        "...node internals, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/RekognitionLambdaS3TriggerStack/BucketNotificationsHandler050a0587b7544547bf325f094a3db834/Role/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BucketNotificationsHandler050a0587b7544547bf325f094a3db834RoleB6FB88EC"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addEventNotification in aws-cdk-lib...",
+        "new RekognitionLambdaS3TriggerStack (/Users/andy/File Manager/thesis/awscdk-transformation-examples/03-rekognition-lambda-s3-trigger/lib/rekognition-lambda-s3-trigger-stack.ts:48:12)"
+      ]
+    }
+  ],
+  "/RekognitionLambdaS3TriggerStack/Bucket/Notifications/HandlerPolicy/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BucketNotificationsHandlerPolicy2180A8BD"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addEventNotification in aws-cdk-lib...",
+        "new RekognitionLambdaS3TriggerStack (/Users/andy/File Manager/thesis/awscdk-transformation-examples/03-rekognition-lambda-s3-trigger/lib/rekognition-lambda-s3-trigger-stack.ts:48:12)"
+      ]
+    }
+  ],
+  "/RekognitionLambdaS3TriggerStack/RekFunction/ServiceRole/DefaultPolicy/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RekFunctionServiceRoleDefaultPolicyD393AA84"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addToRolePolicy in aws-cdk-lib...",
+        "new RekognitionLambdaS3TriggerStack (/Users/andy/File Manager/thesis/awscdk-transformation-examples/03-rekognition-lambda-s3-trigger/lib/rekognition-lambda-s3-trigger-stack.ts:45:20)",
+        "<anonymous> (/Users/andy/File Manager/thesis/awscdk-transformation-examples/03-rekognition-lambda-s3-trigger/bin/rekognition-lambda-s3-trigger.ts:7:1)",
+        "...node internals, ts-node..."
+      ]
+    }
+  ]
+}
