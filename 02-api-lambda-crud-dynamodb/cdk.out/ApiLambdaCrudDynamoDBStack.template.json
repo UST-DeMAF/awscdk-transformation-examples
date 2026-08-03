@@ -1,0 +1,1409 @@
+{
+ "Resources": {
+  "items07D08F4B": {
+   "Type": "AWS::DynamoDB::Table",
+   "Properties": {
+    "AttributeDefinitions": [
+     {
+      "AttributeName": "itemId",
+      "AttributeType": "S"
+     }
+    ],
+    "KeySchema": [
+     {
+      "AttributeName": "itemId",
+      "KeyType": "HASH"
+     }
+    ],
+    "ProvisionedThroughput": {
+     "ReadCapacityUnits": 5,
+     "WriteCapacityUnits": 5
+    },
+    "TableName": "items"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "ApiLambdaCrudDynamoDBStack/items/Resource"
+   }
+  },
+  "getOneItemFunctionServiceRoleCFD54796": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiLambdaCrudDynamoDBStack/getOneItemFunction/ServiceRole/Resource"
+   }
+  },
+  "getOneItemFunctionServiceRoleDefaultPolicy6B743AA8": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "dynamodb:BatchGetItem",
+        "dynamodb:BatchWriteItem",
+        "dynamodb:ConditionCheckItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:DescribeTable",
+        "dynamodb:GetItem",
+        "dynamodb:GetRecords",
+        "dynamodb:GetShardIterator",
+        "dynamodb:PutItem",
+        "dynamodb:Query",
+        "dynamodb:Scan",
+        "dynamodb:UpdateItem"
+       ],
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::GetAtt": [
+         "items07D08F4B",
+         "Arn"
+        ]
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "getOneItemFunctionServiceRoleDefaultPolicy6B743AA8",
+    "Roles": [
+     {
+      "Ref": "getOneItemFunctionServiceRoleCFD54796"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiLambdaCrudDynamoDBStack/getOneItemFunction/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "getOneItemFunctionE3257B22": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-123456789012-eu-central-1",
+     "S3Key": "de3118e0c715a3f39bc8b5a010bbe7ce29eb0ca04dab3aec1a32e6a75a92e160.zip"
+    },
+    "Environment": {
+     "Variables": {
+      "PRIMARY_KEY": "itemId",
+      "TABLE_NAME": {
+       "Ref": "items07D08F4B"
+      }
+     }
+    },
+    "Handler": "index.handler",
+    "Role": {
+     "Fn::GetAtt": [
+      "getOneItemFunctionServiceRoleCFD54796",
+      "Arn"
+     ]
+    },
+    "Runtime": "nodejs24.x"
+   },
+   "DependsOn": [
+    "getOneItemFunctionServiceRoleDefaultPolicy6B743AA8",
+    "getOneItemFunctionServiceRoleCFD54796"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "ApiLambdaCrudDynamoDBStack/getOneItemFunction/Resource",
+    "aws:asset:path": "asset.de3118e0c715a3f39bc8b5a010bbe7ce29eb0ca04dab3aec1a32e6a75a92e160",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "getOneItemFunctionLogGroupF4A2FDEF": {
+   "Type": "AWS::Logs::LogGroup",
+   "Properties": {
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "getOneItemFunctionE3257B22"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 731
+   },
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain",
+   "Metadata": {
+    "aws:cdk:path": "ApiLambdaCrudDynamoDBStack/getOneItemFunction/LogGroup/Resource"
+   }
+  },
+  "getAllItemsFunctionServiceRoleCC084440": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiLambdaCrudDynamoDBStack/getAllItemsFunction/ServiceRole/Resource"
+   }
+  },
+  "getAllItemsFunctionServiceRoleDefaultPolicyF069C759": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "dynamodb:BatchGetItem",
+        "dynamodb:BatchWriteItem",
+        "dynamodb:ConditionCheckItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:DescribeTable",
+        "dynamodb:GetItem",
+        "dynamodb:GetRecords",
+        "dynamodb:GetShardIterator",
+        "dynamodb:PutItem",
+        "dynamodb:Query",
+        "dynamodb:Scan",
+        "dynamodb:UpdateItem"
+       ],
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::GetAtt": [
+         "items07D08F4B",
+         "Arn"
+        ]
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "getAllItemsFunctionServiceRoleDefaultPolicyF069C759",
+    "Roles": [
+     {
+      "Ref": "getAllItemsFunctionServiceRoleCC084440"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiLambdaCrudDynamoDBStack/getAllItemsFunction/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "getAllItemsFunction0B7A913E": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-123456789012-eu-central-1",
+     "S3Key": "54501532bd0395f392db7b9ab2df9416c8e31b02cf88ee99d2d8bc19e79a3eff.zip"
+    },
+    "Environment": {
+     "Variables": {
+      "PRIMARY_KEY": "itemId",
+      "TABLE_NAME": {
+       "Ref": "items07D08F4B"
+      }
+     }
+    },
+    "Handler": "index.handler",
+    "Role": {
+     "Fn::GetAtt": [
+      "getAllItemsFunctionServiceRoleCC084440",
+      "Arn"
+     ]
+    },
+    "Runtime": "nodejs24.x"
+   },
+   "DependsOn": [
+    "getAllItemsFunctionServiceRoleDefaultPolicyF069C759",
+    "getAllItemsFunctionServiceRoleCC084440"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "ApiLambdaCrudDynamoDBStack/getAllItemsFunction/Resource",
+    "aws:asset:path": "asset.54501532bd0395f392db7b9ab2df9416c8e31b02cf88ee99d2d8bc19e79a3eff",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "getAllItemsFunctionLogGroupA23E3E2E": {
+   "Type": "AWS::Logs::LogGroup",
+   "Properties": {
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "getAllItemsFunction0B7A913E"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 731
+   },
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain",
+   "Metadata": {
+    "aws:cdk:path": "ApiLambdaCrudDynamoDBStack/getAllItemsFunction/LogGroup/Resource"
+   }
+  },
+  "createItemFunctionServiceRole1BBF2178": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiLambdaCrudDynamoDBStack/createItemFunction/ServiceRole/Resource"
+   }
+  },
+  "createItemFunctionServiceRoleDefaultPolicy8FAF1611": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "dynamodb:BatchGetItem",
+        "dynamodb:BatchWriteItem",
+        "dynamodb:ConditionCheckItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:DescribeTable",
+        "dynamodb:GetItem",
+        "dynamodb:GetRecords",
+        "dynamodb:GetShardIterator",
+        "dynamodb:PutItem",
+        "dynamodb:Query",
+        "dynamodb:Scan",
+        "dynamodb:UpdateItem"
+       ],
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::GetAtt": [
+         "items07D08F4B",
+         "Arn"
+        ]
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "createItemFunctionServiceRoleDefaultPolicy8FAF1611",
+    "Roles": [
+     {
+      "Ref": "createItemFunctionServiceRole1BBF2178"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiLambdaCrudDynamoDBStack/createItemFunction/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "createItemFunction8D47E48A": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-123456789012-eu-central-1",
+     "S3Key": "1b413f3454e19bed30ae14d06913bad1865512e51b2e1203843c07aef6db955b.zip"
+    },
+    "Environment": {
+     "Variables": {
+      "PRIMARY_KEY": "itemId",
+      "TABLE_NAME": {
+       "Ref": "items07D08F4B"
+      }
+     }
+    },
+    "Handler": "index.handler",
+    "Role": {
+     "Fn::GetAtt": [
+      "createItemFunctionServiceRole1BBF2178",
+      "Arn"
+     ]
+    },
+    "Runtime": "nodejs24.x"
+   },
+   "DependsOn": [
+    "createItemFunctionServiceRoleDefaultPolicy8FAF1611",
+    "createItemFunctionServiceRole1BBF2178"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "ApiLambdaCrudDynamoDBStack/createItemFunction/Resource",
+    "aws:asset:path": "asset.1b413f3454e19bed30ae14d06913bad1865512e51b2e1203843c07aef6db955b",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "createItemFunctionLogGroup23B552BD": {
+   "Type": "AWS::Logs::LogGroup",
+   "Properties": {
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "createItemFunction8D47E48A"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 731
+   },
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain",
+   "Metadata": {
+    "aws:cdk:path": "ApiLambdaCrudDynamoDBStack/createItemFunction/LogGroup/Resource"
+   }
+  },
+  "updateItemFunctionServiceRole40035396": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiLambdaCrudDynamoDBStack/updateItemFunction/ServiceRole/Resource"
+   }
+  },
+  "updateItemFunctionServiceRoleDefaultPolicy6A793729": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "dynamodb:BatchGetItem",
+        "dynamodb:BatchWriteItem",
+        "dynamodb:ConditionCheckItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:DescribeTable",
+        "dynamodb:GetItem",
+        "dynamodb:GetRecords",
+        "dynamodb:GetShardIterator",
+        "dynamodb:PutItem",
+        "dynamodb:Query",
+        "dynamodb:Scan",
+        "dynamodb:UpdateItem"
+       ],
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::GetAtt": [
+         "items07D08F4B",
+         "Arn"
+        ]
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "updateItemFunctionServiceRoleDefaultPolicy6A793729",
+    "Roles": [
+     {
+      "Ref": "updateItemFunctionServiceRole40035396"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiLambdaCrudDynamoDBStack/updateItemFunction/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "updateItemFunction59415205": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-123456789012-eu-central-1",
+     "S3Key": "93d3c5b519ac25921c2ef5a778fe63a207120b4c51d8d81cf66e2dd566cfd275.zip"
+    },
+    "Environment": {
+     "Variables": {
+      "PRIMARY_KEY": "itemId",
+      "TABLE_NAME": {
+       "Ref": "items07D08F4B"
+      }
+     }
+    },
+    "Handler": "index.handler",
+    "Role": {
+     "Fn::GetAtt": [
+      "updateItemFunctionServiceRole40035396",
+      "Arn"
+     ]
+    },
+    "Runtime": "nodejs24.x"
+   },
+   "DependsOn": [
+    "updateItemFunctionServiceRoleDefaultPolicy6A793729",
+    "updateItemFunctionServiceRole40035396"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "ApiLambdaCrudDynamoDBStack/updateItemFunction/Resource",
+    "aws:asset:path": "asset.93d3c5b519ac25921c2ef5a778fe63a207120b4c51d8d81cf66e2dd566cfd275",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "updateItemFunctionLogGroup55AB2F88": {
+   "Type": "AWS::Logs::LogGroup",
+   "Properties": {
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "updateItemFunction59415205"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 731
+   },
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain",
+   "Metadata": {
+    "aws:cdk:path": "ApiLambdaCrudDynamoDBStack/updateItemFunction/LogGroup/Resource"
+   }
+  },
+  "deleteItemFunctionServiceRole5C201FCC": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiLambdaCrudDynamoDBStack/deleteItemFunction/ServiceRole/Resource"
+   }
+  },
+  "deleteItemFunctionServiceRoleDefaultPolicyDCE46F14": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "dynamodb:BatchGetItem",
+        "dynamodb:BatchWriteItem",
+        "dynamodb:ConditionCheckItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:DescribeTable",
+        "dynamodb:GetItem",
+        "dynamodb:GetRecords",
+        "dynamodb:GetShardIterator",
+        "dynamodb:PutItem",
+        "dynamodb:Query",
+        "dynamodb:Scan",
+        "dynamodb:UpdateItem"
+       ],
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::GetAtt": [
+         "items07D08F4B",
+         "Arn"
+        ]
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "deleteItemFunctionServiceRoleDefaultPolicyDCE46F14",
+    "Roles": [
+     {
+      "Ref": "deleteItemFunctionServiceRole5C201FCC"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiLambdaCrudDynamoDBStack/deleteItemFunction/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "deleteItemFunction2918B1B0": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-123456789012-eu-central-1",
+     "S3Key": "d4ef1b4980482782b0e93da38303c325fc03a2b2a4da31d7ceca0d4d23b0fa54.zip"
+    },
+    "Environment": {
+     "Variables": {
+      "PRIMARY_KEY": "itemId",
+      "TABLE_NAME": {
+       "Ref": "items07D08F4B"
+      }
+     }
+    },
+    "Handler": "index.handler",
+    "Role": {
+     "Fn::GetAtt": [
+      "deleteItemFunctionServiceRole5C201FCC",
+      "Arn"
+     ]
+    },
+    "Runtime": "nodejs24.x"
+   },
+   "DependsOn": [
+    "deleteItemFunctionServiceRoleDefaultPolicyDCE46F14",
+    "deleteItemFunctionServiceRole5C201FCC"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "ApiLambdaCrudDynamoDBStack/deleteItemFunction/Resource",
+    "aws:asset:path": "asset.d4ef1b4980482782b0e93da38303c325fc03a2b2a4da31d7ceca0d4d23b0fa54",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "deleteItemFunctionLogGroup0CFC4A2A": {
+   "Type": "AWS::Logs::LogGroup",
+   "Properties": {
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "deleteItemFunction2918B1B0"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 731
+   },
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain",
+   "Metadata": {
+    "aws:cdk:path": "ApiLambdaCrudDynamoDBStack/deleteItemFunction/LogGroup/Resource"
+   }
+  },
+  "itemsApi28111E1C": {
+   "Type": "AWS::ApiGateway::RestApi",
+   "Properties": {
+    "Name": "Items Service"
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiLambdaCrudDynamoDBStack/itemsApi/Resource"
+   }
+  },
+  "itemsApiDeploymentFEC31BD08bc9a0ac471deaef34da9ea3c8bae8f9": {
+   "Type": "AWS::ApiGateway::Deployment",
+   "Properties": {
+    "Description": "Automatically created by the RestApi construct",
+    "RestApiId": {
+     "Ref": "itemsApi28111E1C"
+    }
+   },
+   "DependsOn": [
+    "itemsApiitemsidDELETE21550005",
+    "itemsApiitemsidGET38A333A8",
+    "itemsApiitemsidOPTIONS62BD91D0",
+    "itemsApiitemsidPATCH0548CB6A",
+    "itemsApiitemsidA29927C2",
+    "itemsApiitemsGET59B0F78A",
+    "itemsApiitemsOPTIONSB46B4D53",
+    "itemsApiitemsPOSTDD3E83D0",
+    "itemsApiitems9015DBED"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "ApiLambdaCrudDynamoDBStack/itemsApi/Deployment/Resource",
+    "aws:cdk:do-not-refactor": true
+   }
+  },
+  "itemsApiDeploymentStageprodE77B897D": {
+   "Type": "AWS::ApiGateway::Stage",
+   "Properties": {
+    "DeploymentId": {
+     "Ref": "itemsApiDeploymentFEC31BD08bc9a0ac471deaef34da9ea3c8bae8f9"
+    },
+    "RestApiId": {
+     "Ref": "itemsApi28111E1C"
+    },
+    "StageName": "prod"
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiLambdaCrudDynamoDBStack/itemsApi/DeploymentStage.prod/Resource"
+   }
+  },
+  "itemsApiitems9015DBED": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Fn::GetAtt": [
+      "itemsApi28111E1C",
+      "RootResourceId"
+     ]
+    },
+    "PathPart": "items",
+    "RestApiId": {
+     "Ref": "itemsApi28111E1C"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiLambdaCrudDynamoDBStack/itemsApi/Default/items/Resource"
+   }
+  },
+  "itemsApiitemsGETApiPermissionApiLambdaCrudDynamoDBStackitemsApiBA2A0BB1GETitemsD0386943": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "getAllItemsFunction0B7A913E",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:aws:execute-api:eu-central-1:123456789012:",
+       {
+        "Ref": "itemsApi28111E1C"
+       },
+       "/",
+       {
+        "Ref": "itemsApiDeploymentStageprodE77B897D"
+       },
+       "/GET/items"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiLambdaCrudDynamoDBStack/itemsApi/Default/items/GET/ApiPermission.ApiLambdaCrudDynamoDBStackitemsApiBA2A0BB1.GET..items"
+   }
+  },
+  "itemsApiitemsGETApiPermissionTestApiLambdaCrudDynamoDBStackitemsApiBA2A0BB1GETitems68F685DD": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "getAllItemsFunction0B7A913E",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:aws:execute-api:eu-central-1:123456789012:",
+       {
+        "Ref": "itemsApi28111E1C"
+       },
+       "/test-invoke-stage/GET/items"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiLambdaCrudDynamoDBStack/itemsApi/Default/items/GET/ApiPermission.Test.ApiLambdaCrudDynamoDBStackitemsApiBA2A0BB1.GET..items"
+   }
+  },
+  "itemsApiitemsGET59B0F78A": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "AuthorizationType": "NONE",
+    "HttpMethod": "GET",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:aws:apigateway:eu-central-1:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "getAllItemsFunction0B7A913E",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    },
+    "ResourceId": {
+     "Ref": "itemsApiitems9015DBED"
+    },
+    "RestApiId": {
+     "Ref": "itemsApi28111E1C"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiLambdaCrudDynamoDBStack/itemsApi/Default/items/GET/Resource"
+   }
+  },
+  "itemsApiitemsPOSTApiPermissionApiLambdaCrudDynamoDBStackitemsApiBA2A0BB1POSTitems35BEA520": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "createItemFunction8D47E48A",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:aws:execute-api:eu-central-1:123456789012:",
+       {
+        "Ref": "itemsApi28111E1C"
+       },
+       "/",
+       {
+        "Ref": "itemsApiDeploymentStageprodE77B897D"
+       },
+       "/POST/items"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiLambdaCrudDynamoDBStack/itemsApi/Default/items/POST/ApiPermission.ApiLambdaCrudDynamoDBStackitemsApiBA2A0BB1.POST..items"
+   }
+  },
+  "itemsApiitemsPOSTApiPermissionTestApiLambdaCrudDynamoDBStackitemsApiBA2A0BB1POSTitemsB416B951": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "createItemFunction8D47E48A",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:aws:execute-api:eu-central-1:123456789012:",
+       {
+        "Ref": "itemsApi28111E1C"
+       },
+       "/test-invoke-stage/POST/items"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiLambdaCrudDynamoDBStack/itemsApi/Default/items/POST/ApiPermission.Test.ApiLambdaCrudDynamoDBStackitemsApiBA2A0BB1.POST..items"
+   }
+  },
+  "itemsApiitemsPOSTDD3E83D0": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "AuthorizationType": "NONE",
+    "HttpMethod": "POST",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:aws:apigateway:eu-central-1:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "createItemFunction8D47E48A",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    },
+    "ResourceId": {
+     "Ref": "itemsApiitems9015DBED"
+    },
+    "RestApiId": {
+     "Ref": "itemsApi28111E1C"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiLambdaCrudDynamoDBStack/itemsApi/Default/items/POST/Resource"
+   }
+  },
+  "itemsApiitemsOPTIONSB46B4D53": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "AuthorizationType": "NONE",
+    "HttpMethod": "OPTIONS",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
+        "method.response.header.Access-Control-Allow-Origin": "'*'",
+        "method.response.header.Access-Control-Allow-Credentials": "'false'",
+        "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET,PUT,POST,DELETE'"
+       },
+       "StatusCode": "200"
+      }
+     ],
+     "PassthroughBehavior": "NEVER",
+     "RequestTemplates": {
+      "application/json": "{\"statusCode\": 200}"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Methods": true,
+       "method.response.header.Access-Control-Allow-Credentials": true,
+       "method.response.header.Access-Control-Allow-Origin": true
+      },
+      "StatusCode": "200"
+     }
+    ],
+    "ResourceId": {
+     "Ref": "itemsApiitems9015DBED"
+    },
+    "RestApiId": {
+     "Ref": "itemsApi28111E1C"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiLambdaCrudDynamoDBStack/itemsApi/Default/items/OPTIONS/Resource"
+   }
+  },
+  "itemsApiitemsidA29927C2": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Ref": "itemsApiitems9015DBED"
+    },
+    "PathPart": "{id}",
+    "RestApiId": {
+     "Ref": "itemsApi28111E1C"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiLambdaCrudDynamoDBStack/itemsApi/Default/items/{id}/Resource"
+   }
+  },
+  "itemsApiitemsidGETApiPermissionApiLambdaCrudDynamoDBStackitemsApiBA2A0BB1GETitemsid68E7CBA4": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "getOneItemFunctionE3257B22",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:aws:execute-api:eu-central-1:123456789012:",
+       {
+        "Ref": "itemsApi28111E1C"
+       },
+       "/",
+       {
+        "Ref": "itemsApiDeploymentStageprodE77B897D"
+       },
+       "/GET/items/*"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiLambdaCrudDynamoDBStack/itemsApi/Default/items/{id}/GET/ApiPermission.ApiLambdaCrudDynamoDBStackitemsApiBA2A0BB1.GET..items.{id}"
+   }
+  },
+  "itemsApiitemsidGETApiPermissionTestApiLambdaCrudDynamoDBStackitemsApiBA2A0BB1GETitemsid2BD950F9": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "getOneItemFunctionE3257B22",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:aws:execute-api:eu-central-1:123456789012:",
+       {
+        "Ref": "itemsApi28111E1C"
+       },
+       "/test-invoke-stage/GET/items/*"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiLambdaCrudDynamoDBStack/itemsApi/Default/items/{id}/GET/ApiPermission.Test.ApiLambdaCrudDynamoDBStackitemsApiBA2A0BB1.GET..items.{id}"
+   }
+  },
+  "itemsApiitemsidGET38A333A8": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "AuthorizationType": "NONE",
+    "HttpMethod": "GET",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:aws:apigateway:eu-central-1:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "getOneItemFunctionE3257B22",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    },
+    "ResourceId": {
+     "Ref": "itemsApiitemsidA29927C2"
+    },
+    "RestApiId": {
+     "Ref": "itemsApi28111E1C"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiLambdaCrudDynamoDBStack/itemsApi/Default/items/{id}/GET/Resource"
+   }
+  },
+  "itemsApiitemsidPATCHApiPermissionApiLambdaCrudDynamoDBStackitemsApiBA2A0BB1PATCHitemsid691ACA5A": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "updateItemFunction59415205",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:aws:execute-api:eu-central-1:123456789012:",
+       {
+        "Ref": "itemsApi28111E1C"
+       },
+       "/",
+       {
+        "Ref": "itemsApiDeploymentStageprodE77B897D"
+       },
+       "/PATCH/items/*"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiLambdaCrudDynamoDBStack/itemsApi/Default/items/{id}/PATCH/ApiPermission.ApiLambdaCrudDynamoDBStackitemsApiBA2A0BB1.PATCH..items.{id}"
+   }
+  },
+  "itemsApiitemsidPATCHApiPermissionTestApiLambdaCrudDynamoDBStackitemsApiBA2A0BB1PATCHitemsid0BA916A7": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "updateItemFunction59415205",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:aws:execute-api:eu-central-1:123456789012:",
+       {
+        "Ref": "itemsApi28111E1C"
+       },
+       "/test-invoke-stage/PATCH/items/*"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiLambdaCrudDynamoDBStack/itemsApi/Default/items/{id}/PATCH/ApiPermission.Test.ApiLambdaCrudDynamoDBStackitemsApiBA2A0BB1.PATCH..items.{id}"
+   }
+  },
+  "itemsApiitemsidPATCH0548CB6A": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "AuthorizationType": "NONE",
+    "HttpMethod": "PATCH",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:aws:apigateway:eu-central-1:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "updateItemFunction59415205",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    },
+    "ResourceId": {
+     "Ref": "itemsApiitemsidA29927C2"
+    },
+    "RestApiId": {
+     "Ref": "itemsApi28111E1C"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiLambdaCrudDynamoDBStack/itemsApi/Default/items/{id}/PATCH/Resource"
+   }
+  },
+  "itemsApiitemsidDELETEApiPermissionApiLambdaCrudDynamoDBStackitemsApiBA2A0BB1DELETEitemsid743A373B": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "deleteItemFunction2918B1B0",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:aws:execute-api:eu-central-1:123456789012:",
+       {
+        "Ref": "itemsApi28111E1C"
+       },
+       "/",
+       {
+        "Ref": "itemsApiDeploymentStageprodE77B897D"
+       },
+       "/DELETE/items/*"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiLambdaCrudDynamoDBStack/itemsApi/Default/items/{id}/DELETE/ApiPermission.ApiLambdaCrudDynamoDBStackitemsApiBA2A0BB1.DELETE..items.{id}"
+   }
+  },
+  "itemsApiitemsidDELETEApiPermissionTestApiLambdaCrudDynamoDBStackitemsApiBA2A0BB1DELETEitemsid498E7998": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "deleteItemFunction2918B1B0",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:aws:execute-api:eu-central-1:123456789012:",
+       {
+        "Ref": "itemsApi28111E1C"
+       },
+       "/test-invoke-stage/DELETE/items/*"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiLambdaCrudDynamoDBStack/itemsApi/Default/items/{id}/DELETE/ApiPermission.Test.ApiLambdaCrudDynamoDBStackitemsApiBA2A0BB1.DELETE..items.{id}"
+   }
+  },
+  "itemsApiitemsidDELETE21550005": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "AuthorizationType": "NONE",
+    "HttpMethod": "DELETE",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:aws:apigateway:eu-central-1:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "deleteItemFunction2918B1B0",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    },
+    "ResourceId": {
+     "Ref": "itemsApiitemsidA29927C2"
+    },
+    "RestApiId": {
+     "Ref": "itemsApi28111E1C"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiLambdaCrudDynamoDBStack/itemsApi/Default/items/{id}/DELETE/Resource"
+   }
+  },
+  "itemsApiitemsidOPTIONS62BD91D0": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "AuthorizationType": "NONE",
+    "HttpMethod": "OPTIONS",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
+        "method.response.header.Access-Control-Allow-Origin": "'*'",
+        "method.response.header.Access-Control-Allow-Credentials": "'false'",
+        "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET,PUT,POST,DELETE'"
+       },
+       "StatusCode": "200"
+      }
+     ],
+     "PassthroughBehavior": "NEVER",
+     "RequestTemplates": {
+      "application/json": "{\"statusCode\": 200}"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Methods": true,
+       "method.response.header.Access-Control-Allow-Credentials": true,
+       "method.response.header.Access-Control-Allow-Origin": true
+      },
+      "StatusCode": "200"
+     }
+    ],
+    "ResourceId": {
+     "Ref": "itemsApiitemsidA29927C2"
+    },
+    "RestApiId": {
+     "Ref": "itemsApi28111E1C"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiLambdaCrudDynamoDBStack/itemsApi/Default/items/{id}/OPTIONS/Resource"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/+1Y3WvbMBD/W6bHonoshT30Le3oKGu7kPQthHKxro4aWRLSuZ0R/t+H5K9+jLJBaToI2EjcnX73JZ1PnmSTr5Psyyd48Ie52B4quc7CgiDfcnjwN0HUGkoj1lm4hrXCZWAWHEmSRv/Amh0HpqFEdswOGGdU2zhdsIYziuJXI89hae5BzYySec2OmUBPztSsWfHTW53AG66gXAu40Ubgnc+u0nBW6TyqWwaGmlzd4a0rLZTURTQBfxE6DerSiEqhTxINZwKtvzD59kwqnAFtupWo76UzukRNvW2VJjlYmhvRTzeghULXAYb2eRcz3kvP3t29u3t339jdFZdQZmFuUsEE76sSxUmqltZJnUsLaprnphqWtzJxwTQVu15/CRoKFKlqymjWMjyh1VPXya6idyDEtZn1KvpauwwdlwjyzblWUuPAYwfsL5iv4+4d3Du4d3B3DqYWKhrOW3JcM8Bdm8h5oeUlWYgFAWEsav6RwX8i7/F3ip/y3aa64f7oBrxH8tk0DtwfZSdVvkU6AY9pJzx7V12bnYXTW9131wkRXSm9l0Y3XJnCZ+HCFN+dqewyMNVNh5Y+GvfmxORZr7XhYGUBhA9QZ2GOnqZWLgNz7ezZqo7Pv6FVpo7hWoZ4y8idtMNx5gysHG4kBFKP4n6wKx21C1PIHNS5eJKL/5eegjR6yxcEBaYQ9aRHwUxMPkdvKpdjv5NWA6W9B47tjwXazMDREMJXuH22EhC/RNoY0WY1Ufr2jci2vI4gNWHh4FEqTcrrmLadIgRWJsk5emu0774TnoAqfzp2pa5jz8BBiYTO95+OLnGXT1D+FWTXUfgICB8jE2mXtxBNM56bdIpSoY5HTOoiiv2syFbU8PjfI7vzn+8nkyw+n+68lIfd1SKbt+NvEDtmNLIRAAA="
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiLambdaCrudDynamoDBStack/CDKMetadata/Default"
+   }
+  }
+ },
+ "Outputs": {
+  "itemsApiEndpoint8392E274": {
+   "Value": {
+    "Fn::Join": [
+     "",
+     [
+      "https://",
+      {
+       "Ref": "itemsApi28111E1C"
+      },
+      ".execute-api.eu-central-1.",
+      {
+       "Ref": "AWS::URLSuffix"
+      },
+      "/",
+      {
+       "Ref": "itemsApiDeploymentStageprodE77B897D"
+      },
+      "/"
+     ]
+    ]
+   }
+  }
+ },
+ "Parameters": {
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}

@@ -5,6 +5,8 @@ dedicated VPC.
 
 ## Architecture
 
+![Architecture: users reach an internet gateway over HTTP:80, which fronts an Application Load Balancer in a public subnet that forwards to an nginx Fargate task in a private subnet, run by an ECS cluster](./diagram/01-ecs-fargate-service.png)
+
 - **VPC** spanning two Availability Zones with a single NAT gateway.
 - **ECS cluster** hosting the service.
 - **Application Load Balanced Fargate Service** running the public `nginx` image on port 80,
