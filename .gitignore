@@ -11,3 +11,6 @@ node_modules
 cdk.out/asset.*
 cdk.out/*.assets.json
 cdk.out/*.zip
+
+# mac
+.DS_Store*
