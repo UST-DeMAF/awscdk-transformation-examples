@@ -1,0 +1,116 @@
+{
+  "/cross-region-stack-123456789012:eu-west-1": [
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib...",
+        "(no user code in 10 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/cross-region-stack-123456789012:eu-west-1/Default/CrossRegionCodePipelineReplicationBucketEncryptionKey": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": {
+        "removalPolicy": "destroy",
+        "enableKeyRotation": "*"
+      }
+    }
+  ],
+  "/cross-region-stack-123456789012:eu-west-1/Default/CrossRegionCodePipelineReplicationBucketEncryptionAlias": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": {
+        "targetKey": "*",
+        "aliasName": "*",
+        "removalPolicy": "destroy"
+      }
+    }
+  ],
+  "/cross-region-stack-123456789012:eu-west-1/Default/CrossRegionCodePipelineReplicationBucket": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": {
+        "bucketName": "*",
+        "encryption": "KMS",
+        "encryptionKey": "*",
+        "enforceSSL": true,
+        "blockPublicAccess": "*"
+      }
+    }
+  ],
+  "/cross-region-stack-123456789012:eu-west-1/CDKMetadata/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadata"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (/Users/andy/File Manager/thesis/awscdk-transformation-examples/04-codepipeline-ecs-lambda/bin/codepipeline-ecs-lambda.ts:34:5)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/cross-region-stack-123456789012:eu-west-1/Default/CrossRegionCodePipelineReplicationBucketEncryptionKey/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CrossRegionCodePipelineReplicationBucketEncryptionKey70216490"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib...",
+        "(no user code in 10 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/cross-region-stack-123456789012:eu-west-1/Default/CrossRegionCodePipelineReplicationBucketEncryptionAlias/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CrossRegionCodePipelineReplicationBucketEncryptionAliasF1A0F37D"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib...",
+        "(no user code in 10 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/cross-region-stack-123456789012:eu-west-1/Default/CrossRegionCodePipelineReplicationBucket/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CrossRegionCodePipelineReplicationBucketFC3227F2"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib...",
+        "(no user code in 10 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/cross-region-stack-123456789012:eu-west-1/Default/CrossRegionCodePipelineReplicationBucket/Policy": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": {
+        "bucket": "*"
+      }
+    }
+  ],
+  "/cross-region-stack-123456789012:eu-west-1/Default/CrossRegionCodePipelineReplicationBucket/Policy/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CrossRegionCodePipelineReplicationBucketPolicyB7BA2BCA"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib...",
+        "(no user code in 10 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ]
+}

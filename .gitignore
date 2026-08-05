@@ -8,10 +8,12 @@ node_modules
 .cdk.staging
 
 # artifacts not needed as transformation input
-**/cdk.out/asset.*
-**/cdk.out/*.assets.json
-**/cdk.out/*.zip
-**/cdk.out/cdk.out
+**/cdk.out/**/asset.*
+**/cdk.out/**/*.assets.json
+**/cdk.out/**/*.zip
+**/cdk.out/**/cdk.out
+**/cdk.out/**/*.dot
+**/cdk.out/**/validation-report.json
 
 # mac
 .DS_Store*

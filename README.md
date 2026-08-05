@@ -16,6 +16,9 @@ what the cdk-plugin reads.
   five CRUD Lambda functions over a DynamoDB table.
 - **[03-rekognition-lambda-s3-trigger](./03-rekognition-lambda-s3-trigger)** — S3 upload triggers a
   Lambda that labels the image with Amazon Rekognition and stores the result in DynamoDB.
+- **[04-codepipeline-ecs-lambda](./04-codepipeline-ecs-lambda)** — CodePipeline deploying a
+  multi-stack application: VPC, Aurora, ECS Fargate behind an ALB, API Gateway Lambdas and an
+  EventBridge/SNS/SQS tier.
 
 ## Running an example
 

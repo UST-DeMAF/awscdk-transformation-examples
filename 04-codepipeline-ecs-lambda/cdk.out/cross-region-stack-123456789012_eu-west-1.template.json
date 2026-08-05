@@ -1,0 +1,220 @@
+{
+ "Resources": {
+  "CrossRegionCodePipelineReplicationBucketEncryptionKey70216490": {
+   "Type": "AWS::KMS::Key",
+   "Properties": {
+    "KeyPolicy": {
+     "Statement": [
+      {
+       "Action": "kms:*",
+       "Effect": "Allow",
+       "Principal": {
+        "AWS": "arn:aws:iam::123456789012:root"
+       },
+       "Resource": "*"
+      },
+      {
+       "Action": [
+        "kms:Decrypt",
+        "kms:DescribeKey",
+        "kms:Encrypt",
+        "kms:GenerateDataKey*",
+        "kms:ReEncrypt*"
+       ],
+       "Effect": "Allow",
+       "Principal": {
+        "AWS": "arn:aws:iam::123456789012:root"
+       },
+       "Resource": "*"
+      },
+      {
+       "Action": [
+        "kms:Decrypt",
+        "kms:DescribeKey"
+       ],
+       "Effect": "Allow",
+       "Principal": {
+        "AWS": {
+         "Fn::Join": [
+          "",
+          [
+           "arn:",
+           {
+            "Ref": "AWS::Partition"
+           },
+           ":iam::222222222222:role/cdk-hnb659fds-deploy-role-222222222222-eu-west-1"
+          ]
+         ]
+        }
+       },
+       "Resource": "*"
+      }
+     ],
+     "Version": "2012-10-17"
+    }
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "cross-region-stack-123456789012:eu-west-1/Default/CrossRegionCodePipelineReplicationBucketEncryptionKey/Resource"
+   }
+  },
+  "CrossRegionCodePipelineReplicationBucketEncryptionAliasF1A0F37D": {
+   "Type": "AWS::KMS::Alias",
+   "Properties": {
+    "AliasName": "alias/stack-sutencryptionalias015ec75a0fe24b0d40fa",
+    "TargetKeyId": {
+     "Fn::GetAtt": [
+      "CrossRegionCodePipelineReplicationBucketEncryptionKey70216490",
+      "Arn"
+     ]
+    }
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "cross-region-stack-123456789012:eu-west-1/Default/CrossRegionCodePipelineReplicationBucketEncryptionAlias/Resource"
+   }
+  },
+  "CrossRegionCodePipelineReplicationBucketFC3227F2": {
+   "Type": "AWS::S3::Bucket",
+   "Properties": {
+    "BucketEncryption": {
+     "ServerSideEncryptionConfiguration": [
+      {
+       "ServerSideEncryptionByDefault": {
+        "KMSMasterKeyID": {
+         "Fn::Join": [
+          "",
+          [
+           "arn:aws:kms:eu-west-1:123456789012:",
+           {
+            "Ref": "CrossRegionCodePipelineReplicationBucketEncryptionAliasF1A0F37D"
+           }
+          ]
+         ]
+        },
+        "SSEAlgorithm": "aws:kms"
+       }
+      }
+     ]
+    },
+    "BucketName": "aws-codepipeline-stack-sueplicationbucket82beb9e85c3ba0a949f0",
+    "PublicAccessBlockConfiguration": {
+     "BlockPublicAcls": true,
+     "BlockPublicPolicy": true,
+     "IgnorePublicAcls": true,
+     "RestrictPublicBuckets": true
+    }
+   },
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain",
+   "Metadata": {
+    "aws:cdk:path": "cross-region-stack-123456789012:eu-west-1/Default/CrossRegionCodePipelineReplicationBucket/Resource"
+   }
+  },
+  "CrossRegionCodePipelineReplicationBucketPolicyB7BA2BCA": {
+   "Type": "AWS::S3::BucketPolicy",
+   "Properties": {
+    "Bucket": {
+     "Ref": "CrossRegionCodePipelineReplicationBucketFC3227F2"
+    },
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": "s3:*",
+       "Condition": {
+        "Bool": {
+         "aws:SecureTransport": "false"
+        }
+       },
+       "Effect": "Deny",
+       "Principal": {
+        "AWS": "*"
+       },
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "CrossRegionCodePipelineReplicationBucketFC3227F2",
+          "Arn"
+         ]
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           {
+            "Fn::GetAtt": [
+             "CrossRegionCodePipelineReplicationBucketFC3227F2",
+             "Arn"
+            ]
+           },
+           "/*"
+          ]
+         ]
+        }
+       ]
+      },
+      {
+       "Action": [
+        "s3:GetBucket*",
+        "s3:GetObject*",
+        "s3:List*"
+       ],
+       "Effect": "Allow",
+       "Principal": {
+        "AWS": {
+         "Fn::Join": [
+          "",
+          [
+           "arn:",
+           {
+            "Ref": "AWS::Partition"
+           },
+           ":iam::222222222222:role/cdk-hnb659fds-deploy-role-222222222222-eu-west-1"
+          ]
+         ]
+        }
+       },
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "CrossRegionCodePipelineReplicationBucketFC3227F2",
+          "Arn"
+         ]
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           {
+            "Fn::GetAtt": [
+             "CrossRegionCodePipelineReplicationBucketFC3227F2",
+             "Arn"
+            ]
+           },
+           "/*"
+          ]
+         ]
+        }
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "cross-region-stack-123456789012:eu-west-1/Default/CrossRegionCodePipelineReplicationBucket/Policy/Resource"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/3VPwWoDIRD9lsyxuJZa6GFvaY+2IWSPSymuOylGV4O6CSL+e8ka2pRSGHgz84b33jDKnhh9WIlzaOSoG6MGmrsopCbiHD6yngLNHFOfwePkTsJsnVEyQQsjhuhdAgJoxWCQY9q5KKJyFlq4g/JOXvaWYyJro0ToM0ThPzFyTAtPQFz2GzHhdf7PoSotKoWER5qfZ6kx9hmGpbmRQCt9Ol4z8Lfu1+rHGe3eeYld9wpt9DMSGIyTejsPRsm1lBjCzQ/VjlSo6b69/5xVvpRCrBuRHsL9iTF6qdUhKNX42UY1Id1V/AJ3b9CJgQEAAA=="
+   },
+   "Metadata": {
+    "aws:cdk:path": "cross-region-stack-123456789012:eu-west-1/CDKMetadata/Default"
+   }
+  }
+ }
+}
