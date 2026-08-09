@@ -19,6 +19,5 @@ reads:
 
 ## Origin
 
-Adapted from the official
-[aws-samples/aws-cdk-examples](https://github.com/aws-samples/aws-cdk-examples) repository
-(`typescript/rekognition-lambda-s3-trigger`).
+Adapted from [`typescript/rekognition-lambda-s3-trigger`](https://github.com/aws-samples/aws-cdk-examples/tree/main/typescript/rekognition-lambda-s3-trigger)
+in the official [aws-samples/aws-cdk-examples](https://github.com/aws-samples/aws-cdk-examples) repository.

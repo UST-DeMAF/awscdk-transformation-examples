@@ -18,6 +18,5 @@ reads:
 
 ## Origin
 
-Adapted from the official
-[aws-samples/aws-cdk-examples](https://github.com/aws-samples/aws-cdk-examples) repository
-(`typescript/api-cors-lambda-crud-dynamodb`).
+Adapted from [`typescript/api-cors-lambda-crud-dynamodb`](https://github.com/aws-samples/aws-cdk-examples/tree/main/typescript/api-cors-lambda-crud-dynamodb)
+in the official [aws-samples/aws-cdk-examples](https://github.com/aws-samples/aws-cdk-examples) repository.

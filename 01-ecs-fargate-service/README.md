@@ -19,6 +19,5 @@ reads:
 
 ## Origin
 
-Adapted from the official
-[aws-samples/aws-cdk-examples](https://github.com/aws-samples/aws-cdk-examples) repository
-(`typescript/ecs/fargate-application-load-balanced-service`).
+Adapted from [`typescript/ecs/fargate-application-load-balanced-service`](https://github.com/aws-samples/aws-cdk-examples/tree/main/typescript/ecs/fargate-application-load-balanced-service)
+in the official [aws-samples/aws-cdk-examples](https://github.com/aws-samples/aws-cdk-examples) repository.

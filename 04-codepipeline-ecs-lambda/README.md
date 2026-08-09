@@ -21,6 +21,5 @@ reads:
 
 ## Origin
 
-Adapted from the official
-[aws-samples/aws-cdk-examples](https://github.com/aws-samples/aws-cdk-examples) repository
-(`typescript/aws-codepipeline-ecs-lambda`).
+Adapted from [`typescript/aws-codepipeline-ecs-lambda`](https://github.com/aws-samples/aws-cdk-examples/tree/main/typescript/aws-codepipeline-ecs-lambda)
+in the official [aws-samples/aws-cdk-examples](https://github.com/aws-samples/aws-cdk-examples) repository.
