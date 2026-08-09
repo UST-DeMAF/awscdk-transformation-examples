@@ -1,0 +1,26 @@
+{
+  "name": "aiops-eks-workshop",
+  "version": "0.1.0",
+  "bin": {
+    "eks-workshop": "bin/eks-workshop.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "cdk": "cdk"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^20.11.0",
+    "aws-cdk": "2.1129.0",
+    "ts-node": "^10.9.2",
+    "typescript": "~5.4.5"
+  },
+  "dependencies": {
+    "@aws-quickstart/eks-blueprints": "1.19.0",
+    "aws-cdk-lib": "2.261.0",
+    "constructs": "^10.6.0",
+    "js-yaml": "^4.1.0",
+    "sync-request": "^6.1.0"
+  }
+}
