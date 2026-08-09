@@ -1,24 +1,24 @@
 # ECS Fargate Service
 
-An Amazon ECS service running on AWS Fargate behind an Application Load Balancer, provisioned in a
-dedicated VPC.
+An Amazon ECS service running on AWS Fargate behind an Application Load Balancer, deployed into a
+dedicated VPC. The service runs the public `nginx` container image on port 80 and is reachable
+through an internet-facing load balancer.
 
 ## Architecture
 
-![Architecture: users reach an internet gateway over HTTP:80, which fronts an Application Load Balancer in a public subnet that forwards to an nginx Fargate task in a private subnet, run by an ECS cluster](./diagram/01-ecs-fargate-service.png)
-
-- **VPC** spanning two Availability Zones with a single NAT gateway.
-- **ECS cluster** hosting the service.
-- **Application Load Balanced Fargate Service** running the public `nginx` image on port 80,
-  fronted by an internet-facing Application Load Balancer.
-
-## Useful commands
-
-- `npm install`     install dependencies
-- `npx cdk synth`   synthesize the CloudFormation template
-- `npx cdk deploy`  deploy the stack to your AWS account/region
+![Architecture](diagram/01-ecs-fargate-service.png)
 
 ## Transformation input
 
-- `cdk.out/` — the synthesized CloudFormation output (`manifest.json`, `tree.json`,
-  `EcsFargateStack.template.json`) used as the transformation input.
+The `cdk.out/` directory is the input to the CDK → EDMM transformation. The cdk-plugin parser only
+reads:
+
+- `manifest.json` — the list of stacks,
+- `tree.json` — the CDK construct hierarchy,
+- `EcsFargateStack.template.json` — the synthesized CloudFormation resources.
+
+## Origin
+
+Adapted from the official
+[aws-samples/aws-cdk-examples](https://github.com/aws-samples/aws-cdk-examples) repository
+(`typescript/ecs/fargate-application-load-balanced-service`).

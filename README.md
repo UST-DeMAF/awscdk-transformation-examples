@@ -5,8 +5,11 @@ A few AWS CDK example apps that we use to test the CDK to EDMM transformation.
 The examples come from the official
 [aws-samples/aws-cdk-examples](https://github.com/aws-samples/aws-cdk-examples) repository.
 
-Each example keeps its CDK source and the synthesized CloudFormation output (`cdk.out/`), which is
-what the cdk-plugin reads.
+Each example folder contains:
+
+- `example/` — the CDK app source.
+- `cdk.out/` — the synthesized CloudFormation output that the cdk-plugin reads.
+- `diagram/` — an architecture diagram of the example.
 
 ## Examples
 
@@ -22,10 +25,10 @@ what the cdk-plugin reads.
 
 ## Running an example
 
-Every folder is a normal CDK TypeScript project:
+The CDK app lives in each example's `example/` folder. To re-synthesize the CloudFormation output:
 
 ```bash
-cd 01-ecs-fargate-service
+cd 01-ecs-fargate-service/example
 npm install
-npx cdk synth
+npx cdk synth --output ../cdk.out
 ```

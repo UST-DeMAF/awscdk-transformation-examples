@@ -7,9 +7,10 @@ node_modules
 *.js.map
 .cdk.staging
 
-# artifacts not needed as transformation input
+# cdk.out artifacts not needed by the parser (only manifest.json, tree.json, *.template.json are)
 **/cdk.out/**/asset.*
 **/cdk.out/**/*.assets.json
+**/cdk.out/**/*.metadata.json
 **/cdk.out/**/*.zip
 **/cdk.out/**/cdk.out
 **/cdk.out/**/*.dot

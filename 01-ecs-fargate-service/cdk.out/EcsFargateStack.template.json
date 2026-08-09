@@ -478,7 +478,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-123456789012-eu-central-1",
-     "S3Key": "7fa1e366ee8a9ded01fc355f704cff92bfd179574e6f9cfee800a3541df1b200.zip"
+     "S3Key": "02b51ab524e7bcf8f477de3e71e5f9a72e448301b26ba62e9e75a14f9c55a093.zip"
     },
     "Timeout": 900,
     "MemorySize": 128,
@@ -489,7 +489,7 @@
       "Arn"
      ]
     },
-    "Runtime": "nodejs22.x",
+    "Runtime": "nodejs24.x",
     "Description": "Lambda function for removing all inbound/outbound rules from the VPC default security group"
    },
    "DependsOn": [
@@ -497,7 +497,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "EcsFargateStack/Custom::VpcRestrictDefaultSGCustomResourceProvider/Handler",
-    "aws:asset:path": "asset.7fa1e366ee8a9ded01fc355f704cff92bfd179574e6f9cfee800a3541df1b200",
+    "aws:asset:path": "asset.02b51ab524e7bcf8f477de3e71e5f9a72e448301b26ba62e9e75a14f9c55a093",
     "aws:asset:property": "Code"
    }
   },
@@ -870,7 +870,7 @@
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/81VXW/aMBT9LfXj5GYb0jqJt8C6CqkqCFAfhlB1sW9TF8fO/BHGIv775NhAWtqXbQ88RInPvffk2D7X7mW9L1+zTxewsZeMry+lWGXNzAFbU9jYhwZZL2vuK7ZoSAm/8t+W9MkHQokCdwMON7CNyG5Jh4/qfjKkE7+Sgs38SqFbNARqEBJWQgq3/aEVpvq6YiOevpngZiA1W6dxCVUkGVVjdQtesSfSd8YjJaKqr4av0sFaUahRVV/lnBu0dqyGBsEJraI0eiYqWiGc3x2WjvQX5ANZno3A81ARrRQNFL6m2jucw0riET9iubWaiZbgkBw+rkeT8DouNp0YUYPD/+7MR5D2DNb832Scj5IzkRFdOFIOjcKDh+IZl0a5c8CeSlSOzpB5I9z2xmhfLZogNv2Ko2VGVAdqSkBKvcmlHHu30l7xpDSdDiNVBEFTL5H0Fw1hoEZKCoURiZ3FtFLIAuf+PPZK/PSYFqjdzwC3xMvEfN0lDtGUFCjbnL3oN5V0ChJrbNPuxE+A+MsTODHvKDKbNUPprUPTWbVInXD6HUwBodvt+hs+CiXCvFs9r5626mUaHWrlQCg0HSwRztDUguFiX5nGraqHClzYeZvlVSUFa61xq4EPQIJiyF9yUJRgnWBSA1+1GUIVdS9r3q42i67iboB2C4R1qI7JL6a5D3YL5mAKdIed6Ax3VECZNVMtMRx81voS+WBL+g2pjFBMVCBzxrRX7tghvsRQkLNjW7TO+OtqSoyWeAcldm0215M9yURLwcKt2OyiadsGi/Y/xA435rvBZbwIJNKIR++mgrkOkROeU5jzmQOHob1tktQSR84dlbqwWXOri33PG3SojrNNexvDux2dotXeMKRDb50u98OD/d6JT4yuBUczAIs0txbdzEEhVBFqxt5V3u2o0hyzZ/ux7vWyXi/7fPFshbg0XjlRYjaN7z8nXHka6wkAAA=="
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/81VTW8aMRD9LfExcrYtlXLgttA0QooCApRDEYoGe7Jx8NpbfyylK/575bWBTUgubQ8cVrt+M/P22X5j97Le9dfs8wVs7BXj6yspVlkzc8DWFDb2sUHWy5qHii0aUsKv/LclfXJJKFHgbsHhBrYR2S3p8Ek9TIZ04ldSsJlfKXSLhkANQsJKSOG2P7TCVF9XbMTTNxPcDKRm6zQuoYoko2qs7sAr9kz6znikRFT19fBNOlgrCjWq6uucc4PWjtXQIDihVZRGz0RFK4Tz+8PSkf6CXJLl2Qg8DxXRStFA4WuqvcM5rCQe8SOWW6uZaAkOyeHjZjQJr+Ni04kRNTj87858AmnPYM3/Tcb5KDkTGdGFI+XQKDx4KJ5xaZQ7B+y5ROXoDJk3wm1vjfbVogli0684WmZEdaCmBKTUm1zKsXcr7RVPStPpMFJFEDT1Ekl/0RAGaqSkUBiR2FlMK4UscO7PY6/ET49pgdr9DHBLvEzMN13iEE1JgbLN2Yt+V0mnILHGNu1O/ASIvzyBE/OOIrNZM5TeOjSdVYvUCaffwRQQut2uv+GTUCLMu9Xz5mmrXqfRoVYOhELTwRLhDE0tGC72lWncqnqswIWdt1leVVKw1hp3GvgAJCiG/DUHRQnWCSY18FWbIVRR97Lm/Wqz6CruBmi3QFiH6pj8apr7YLdgDqZAd9iJznBHBZRZM9USw8FnrS+RD7ak35DKCMVEBTJnTHvljh3iSwwFOTu2ReuMv66mxGiJ91Bi12ZzPdmTTLQULNyKzS6atm2waP9D7HBjfhhcxotAIo149G4qmOsQOeE5hTmfOXAY2tsmSS1x5NxRqQubNXe62Pe8QYfqONu0tzG829EpWu0NQzr01ulyPzzY74P4xOhacDQDsEhza9HNHBRCFaFm7F3l3Y4qzTF7sZ/qXi/r9bIvFy9WiCvjlRMlZtP4/gPKxY0E6wkAAA=="
    },
    "Metadata": {
     "aws:cdk:path": "EcsFargateStack/CDKMetadata/Default"
