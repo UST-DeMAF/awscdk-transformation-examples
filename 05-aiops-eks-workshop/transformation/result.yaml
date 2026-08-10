@@ -1,0 +1,357 @@
+properties: []
+components:
+  - aws:
+      type: "CloudProvider"
+      description: null
+      properties: []
+      operations: []
+      artifacts: []
+  - eksaiopsNodegroupmngondemandngF1FA0292:
+      type: "eks-KubernetesCluster"
+      description: null
+      properties:
+        - AmiType: "AL2023_x86_64_STANDARD"
+        - ClusterName: "{\"Ref\":\"eksaiops16A19920\"}"
+        - ForceUpdateEnabled: "true"
+        - InstanceTypes: "[\"m5.large\"]"
+        - NodegroupName: "mng-ondemand"
+        - ScalingConfig: "{\"DesiredSize\":2,\"MaxSize\":4,\"MinSize\":1}"
+        - Subnets: "[{\"Ref\":\"eksaiopsvpcPrivateSubnet1Subnet5EBDA988\"},{\"Ref\"\
+            :\"eksaiopsvpcPrivateSubnet2Subnet0FBAFD28\"},{\"Ref\":\"eksaiopsvpcPrivateSubnet3SubnetF7AD5075\"\
+            }]"
+        - DependsOn: "eksaiopsvpcRestrictDefaultSecurityGroupCustomResource5ADE4981"
+      operations: []
+      artifacts: []
+  - eksaiopsvpcPrivateSubnet3SubnetF7AD5075:
+      type: "subnet-ContainerPlatform"
+      description: null
+      properties:
+        - AvailabilityZone: "eu-central-1c"
+        - CidrBlock: "10.0.160.0/19"
+        - MapPublicIpOnLaunch: "false"
+        - Tags: "[{\"Key\":\"aws-cdk:subnet-name\",\"Value\":\"Private\"},{\"Key\"\
+            :\"aws-cdk:subnet-type\",\"Value\":\"Private\"},{\"Key\":\"kubernetes.io/role/internal-elb\"\
+            ,\"Value\":\"1\"},{\"Key\":\"Name\",\"Value\":\"eks-aiops/eks-aiops-vpc/PrivateSubnet3\"\
+            }]"
+      operations: []
+      artifacts: []
+  - eksaiopsvpcPublicSubnet1Subnet26E1CA98:
+      type: "subnet-ContainerPlatform"
+      description: null
+      properties:
+        - AvailabilityZone: "eu-central-1a"
+        - CidrBlock: "10.0.0.0/19"
+        - MapPublicIpOnLaunch: "true"
+        - Tags: "[{\"Key\":\"aws-cdk:subnet-name\",\"Value\":\"Public\"},{\"Key\"\
+            :\"aws-cdk:subnet-type\",\"Value\":\"Public\"},{\"Key\":\"kubernetes.io/role/elb\"\
+            ,\"Value\":\"1\"},{\"Key\":\"Name\",\"Value\":\"eks-aiops/eks-aiops-vpc/PublicSubnet1\"\
+            }]"
+      operations: []
+      artifacts: []
+  - eksaiopsvpcPrivateSubnet2Subnet0FBAFD28:
+      type: "subnet-ContainerPlatform"
+      description: null
+      properties:
+        - AvailabilityZone: "eu-central-1b"
+        - CidrBlock: "10.0.128.0/19"
+        - MapPublicIpOnLaunch: "false"
+        - Tags: "[{\"Key\":\"aws-cdk:subnet-name\",\"Value\":\"Private\"},{\"Key\"\
+            :\"aws-cdk:subnet-type\",\"Value\":\"Private\"},{\"Key\":\"kubernetes.io/role/internal-elb\"\
+            ,\"Value\":\"1\"},{\"Key\":\"Name\",\"Value\":\"eks-aiops/eks-aiops-vpc/PrivateSubnet2\"\
+            }]"
+      operations: []
+      artifacts: []
+  - eksaiopsvpcPublicSubnet2SubnetAAA618D3:
+      type: "subnet-ContainerPlatform"
+      description: null
+      properties:
+        - AvailabilityZone: "eu-central-1b"
+        - CidrBlock: "10.0.32.0/19"
+        - MapPublicIpOnLaunch: "true"
+        - Tags: "[{\"Key\":\"aws-cdk:subnet-name\",\"Value\":\"Public\"},{\"Key\"\
+            :\"aws-cdk:subnet-type\",\"Value\":\"Public\"},{\"Key\":\"kubernetes.io/role/elb\"\
+            ,\"Value\":\"1\"},{\"Key\":\"Name\",\"Value\":\"eks-aiops/eks-aiops-vpc/PublicSubnet2\"\
+            }]"
+      operations: []
+      artifacts: []
+  - eksaiopsvpcPrivateSubnet1Subnet5EBDA988:
+      type: "subnet-ContainerPlatform"
+      description: null
+      properties:
+        - AvailabilityZone: "eu-central-1a"
+        - CidrBlock: "10.0.96.0/19"
+        - MapPublicIpOnLaunch: "false"
+        - Tags: "[{\"Key\":\"aws-cdk:subnet-name\",\"Value\":\"Private\"},{\"Key\"\
+            :\"aws-cdk:subnet-type\",\"Value\":\"Private\"},{\"Key\":\"kubernetes.io/role/internal-elb\"\
+            ,\"Value\":\"1\"},{\"Key\":\"Name\",\"Value\":\"eks-aiops/eks-aiops-vpc/PrivateSubnet1\"\
+            }]"
+      operations: []
+      artifacts: []
+  - eksaiopsvpc7DF683E3:
+      type: "vpc-ContainerPlatform"
+      description: null
+      properties:
+        - CidrBlock: "10.0.0.0/16"
+        - EnableDnsHostnames: "true"
+        - EnableDnsSupport: "true"
+        - InstanceTenancy: "default"
+        - Tags: "[{\"Key\":\"Name\",\"Value\":\"eks-aiops/eks-aiops-vpc\"}]"
+      operations: []
+      artifacts: []
+  - eksaiopsvpcPublicSubnet3Subnet3DAAC95A:
+      type: "subnet-ContainerPlatform"
+      description: null
+      properties:
+        - AvailabilityZone: "eu-central-1c"
+        - CidrBlock: "10.0.64.0/19"
+        - MapPublicIpOnLaunch: "true"
+        - Tags: "[{\"Key\":\"aws-cdk:subnet-name\",\"Value\":\"Public\"},{\"Key\"\
+            :\"aws-cdk:subnet-type\",\"Value\":\"Public\"},{\"Key\":\"kubernetes.io/role/elb\"\
+            ,\"Value\":\"1\"},{\"Key\":\"Name\",\"Value\":\"eks-aiops/eks-aiops-vpc/PublicSubnet3\"\
+            }]"
+      operations: []
+      artifacts: []
+relations:
+  - eksaiopsvpcPrivateSubnet3SubnetF7AD5075_ConnectsTo_eksaiopsvpc7DF683E3:
+      type: "ConnectsTo"
+      description: null
+      source: "eksaiopsvpcPrivateSubnet3SubnetF7AD5075"
+      target: "eksaiopsvpc7DF683E3"
+      properties: []
+      operations: []
+  - eksaiopsvpcPublicSubnet1Subnet26E1CA98_ConnectsTo_eksaiopsvpc7DF683E3:
+      type: "ConnectsTo"
+      description: null
+      source: "eksaiopsvpcPublicSubnet1Subnet26E1CA98"
+      target: "eksaiopsvpc7DF683E3"
+      properties: []
+      operations: []
+  - eksaiopsvpcPrivateSubnet2Subnet0FBAFD28_ConnectsTo_eksaiopsvpc7DF683E3:
+      type: "ConnectsTo"
+      description: null
+      source: "eksaiopsvpcPrivateSubnet2Subnet0FBAFD28"
+      target: "eksaiopsvpc7DF683E3"
+      properties: []
+      operations: []
+  - eksaiopsvpcPublicSubnet2SubnetAAA618D3_ConnectsTo_eksaiopsvpc7DF683E3:
+      type: "ConnectsTo"
+      description: null
+      source: "eksaiopsvpcPublicSubnet2SubnetAAA618D3"
+      target: "eksaiopsvpc7DF683E3"
+      properties: []
+      operations: []
+  - eksaiopsvpcPrivateSubnet1Subnet5EBDA988_ConnectsTo_eksaiopsvpc7DF683E3:
+      type: "ConnectsTo"
+      description: null
+      source: "eksaiopsvpcPrivateSubnet1Subnet5EBDA988"
+      target: "eksaiopsvpc7DF683E3"
+      properties: []
+      operations: []
+  - eksaiopsvpcPublicSubnet3Subnet3DAAC95A_ConnectsTo_eksaiopsvpc7DF683E3:
+      type: "ConnectsTo"
+      description: null
+      source: "eksaiopsvpcPublicSubnet3Subnet3DAAC95A"
+      target: "eksaiopsvpc7DF683E3"
+      properties: []
+      operations: []
+  - eksaiopsNodegroupmngondemandngF1FA0292_DependsOn_eksaiopsvpcPrivateSubnet1Subnet5EBDA988:
+      type: "DependsOn"
+      description: null
+      source: "eksaiopsNodegroupmngondemandngF1FA0292"
+      target: "eksaiopsvpcPrivateSubnet1Subnet5EBDA988"
+      properties: []
+      operations: []
+  - eksaiopsNodegroupmngondemandngF1FA0292_DependsOn_eksaiopsvpcPrivateSubnet2Subnet0FBAFD28:
+      type: "DependsOn"
+      description: null
+      source: "eksaiopsNodegroupmngondemandngF1FA0292"
+      target: "eksaiopsvpcPrivateSubnet2Subnet0FBAFD28"
+      properties: []
+      operations: []
+  - eksaiopsNodegroupmngondemandngF1FA0292_DependsOn_eksaiopsvpcPrivateSubnet3SubnetF7AD5075:
+      type: "DependsOn"
+      description: null
+      source: "eksaiopsNodegroupmngondemandngF1FA0292"
+      target: "eksaiopsvpcPrivateSubnet3SubnetF7AD5075"
+      properties: []
+      operations: []
+  - eksaiopsNodegroupmngondemandngF1FA0292_DependsOn_eksaiopsvpcPublicSubnet1Subnet26E1CA98:
+      type: "DependsOn"
+      description: null
+      source: "eksaiopsNodegroupmngondemandngF1FA0292"
+      target: "eksaiopsvpcPublicSubnet1Subnet26E1CA98"
+      properties: []
+      operations: []
+  - eksaiopsNodegroupmngondemandngF1FA0292_DependsOn_eksaiopsvpcPublicSubnet2SubnetAAA618D3:
+      type: "DependsOn"
+      description: null
+      source: "eksaiopsNodegroupmngondemandngF1FA0292"
+      target: "eksaiopsvpcPublicSubnet2SubnetAAA618D3"
+      properties: []
+      operations: []
+  - eksaiopsNodegroupmngondemandngF1FA0292_DependsOn_eksaiopsvpcPublicSubnet3Subnet3DAAC95A:
+      type: "DependsOn"
+      description: null
+      source: "eksaiopsNodegroupmngondemandngF1FA0292"
+      target: "eksaiopsvpcPublicSubnet3Subnet3DAAC95A"
+      properties: []
+      operations: []
+  - eksaiopsNodegroupmngondemandngF1FA0292_DependsOn_eksaiopsvpc7DF683E3:
+      type: "DependsOn"
+      description: null
+      source: "eksaiopsNodegroupmngondemandngF1FA0292"
+      target: "eksaiopsvpc7DF683E3"
+      properties: []
+      operations: []
+  - eksaiopsNodegroupmngondemandngF1FA0292_HostedOn_aws:
+      type: "HostedOn"
+      description: null
+      source: "eksaiopsNodegroupmngondemandngF1FA0292"
+      target: "aws"
+      properties: []
+      operations: []
+  - eksaiopsvpcPrivateSubnet3SubnetF7AD5075_HostedOn_aws:
+      type: "HostedOn"
+      description: null
+      source: "eksaiopsvpcPrivateSubnet3SubnetF7AD5075"
+      target: "aws"
+      properties: []
+      operations: []
+  - eksaiopsvpcPublicSubnet1Subnet26E1CA98_HostedOn_aws:
+      type: "HostedOn"
+      description: null
+      source: "eksaiopsvpcPublicSubnet1Subnet26E1CA98"
+      target: "aws"
+      properties: []
+      operations: []
+  - eksaiopsvpcPrivateSubnet2Subnet0FBAFD28_HostedOn_aws:
+      type: "HostedOn"
+      description: null
+      source: "eksaiopsvpcPrivateSubnet2Subnet0FBAFD28"
+      target: "aws"
+      properties: []
+      operations: []
+  - eksaiopsvpcPublicSubnet2SubnetAAA618D3_HostedOn_aws:
+      type: "HostedOn"
+      description: null
+      source: "eksaiopsvpcPublicSubnet2SubnetAAA618D3"
+      target: "aws"
+      properties: []
+      operations: []
+  - eksaiopsvpcPrivateSubnet1Subnet5EBDA988_HostedOn_aws:
+      type: "HostedOn"
+      description: null
+      source: "eksaiopsvpcPrivateSubnet1Subnet5EBDA988"
+      target: "aws"
+      properties: []
+      operations: []
+  - eksaiopsvpc7DF683E3_HostedOn_aws:
+      type: "HostedOn"
+      description: null
+      source: "eksaiopsvpc7DF683E3"
+      target: "aws"
+      properties: []
+      operations: []
+  - eksaiopsvpcPublicSubnet3Subnet3DAAC95A_HostedOn_aws:
+      type: "HostedOn"
+      description: null
+      source: "eksaiopsvpcPublicSubnet3Subnet3DAAC95A"
+      target: "aws"
+      properties: []
+      operations: []
+component_types:
+  - BaseType:
+      extends: "-"
+      description: null
+      properties: []
+      operations: []
+  - SoftwareApplication:
+      extends: "BaseType"
+      description: null
+      properties: []
+      operations: []
+  - Storage:
+      extends: "BaseType"
+      description: null
+      properties: []
+      operations: []
+  - DatabaseSystem:
+      extends: "SoftwareApplication"
+      description: null
+      properties: []
+      operations: []
+  - ContainerPlatform:
+      extends: "BaseType"
+      description: null
+      properties: []
+      operations: []
+  - KubernetesCluster:
+      extends: "ContainerPlatform"
+      description: null
+      properties: []
+      operations: []
+  - MessageBroker:
+      extends: "SoftwareApplication"
+      description: null
+      properties: []
+      operations: []
+  - CloudProvider:
+      extends: "BaseType"
+      description: null
+      properties: []
+      operations: []
+  - Platform:
+      extends: "BaseType"
+      description: null
+      properties: []
+      operations: []
+  - PaaS:
+      extends: "Platform"
+      description: null
+      properties: []
+      operations: []
+  - SaaS:
+      extends: "Platform"
+      description: null
+      properties: []
+      operations: []
+  - subnet-ContainerPlatform:
+      extends: "ContainerPlatform"
+      description: null
+      properties: []
+      operations: []
+  - vpc-ContainerPlatform:
+      extends: "ContainerPlatform"
+      description: null
+      properties: []
+      operations: []
+  - eks-KubernetesCluster:
+      extends: "KubernetesCluster"
+      description: null
+      properties: []
+      operations: []
+relation_types:
+  - DependsOn:
+      extends: "-"
+      description: null
+      properties: []
+      operations: []
+  - HostedOn:
+      extends: "DependsOn"
+      description: null
+      properties: []
+      operations: []
+  - AttachesTo:
+      extends: "DependsOn"
+      description: null
+      properties:
+        - location:
+            type: "STRING"
+            required: false
+            default_value: ""
+      operations: []
+  - ConnectsTo:
+      extends: "DependsOn"
+      description: null
+      properties: []
+      operations: []

@@ -1,0 +1,238 @@
+properties: []
+components:
+  - aws:
+      type: "CloudProvider"
+      description: null
+      properties: []
+      operations: []
+      artifacts: []
+  - getOneItemFunctionE3257B22:
+      type: "lambda-SoftwareApplication"
+      description: null
+      properties:
+        - Code: "{\"S3Bucket\":\"cdk-hnb659fds-assets-123456789012-eu-central-1\"\
+            ,\"S3Key\":\"de3118e0c715a3f39bc8b5a010bbe7ce29eb0ca04dab3aec1a32e6a75a92e160.zip\"\
+            }"
+        - Environment: "{\"Variables\":{\"PRIMARY_KEY\":\"itemId\",\"TABLE_NAME\"\
+            :{\"Ref\":\"items07D08F4B\"}}}"
+        - Handler: "index.handler"
+        - Runtime: "nodejs24.x"
+      operations: []
+      artifacts: []
+  - getAllItemsFunction0B7A913E:
+      type: "lambda-SoftwareApplication"
+      description: null
+      properties:
+        - Code: "{\"S3Bucket\":\"cdk-hnb659fds-assets-123456789012-eu-central-1\"\
+            ,\"S3Key\":\"54501532bd0395f392db7b9ab2df9416c8e31b02cf88ee99d2d8bc19e79a3eff.zip\"\
+            }"
+        - Environment: "{\"Variables\":{\"PRIMARY_KEY\":\"itemId\",\"TABLE_NAME\"\
+            :{\"Ref\":\"items07D08F4B\"}}}"
+        - Handler: "index.handler"
+        - Runtime: "nodejs24.x"
+      operations: []
+      artifacts: []
+  - itemsApi28111E1C:
+      type: "apigateway-SoftwareApplication"
+      description: null
+      properties:
+        - Name: "Items Service"
+      operations: []
+      artifacts: []
+  - deleteItemFunction2918B1B0:
+      type: "lambda-SoftwareApplication"
+      description: null
+      properties:
+        - Code: "{\"S3Bucket\":\"cdk-hnb659fds-assets-123456789012-eu-central-1\"\
+            ,\"S3Key\":\"d4ef1b4980482782b0e93da38303c325fc03a2b2a4da31d7ceca0d4d23b0fa54.zip\"\
+            }"
+        - Environment: "{\"Variables\":{\"PRIMARY_KEY\":\"itemId\",\"TABLE_NAME\"\
+            :{\"Ref\":\"items07D08F4B\"}}}"
+        - Handler: "index.handler"
+        - Runtime: "nodejs24.x"
+      operations: []
+      artifacts: []
+  - createItemFunction8D47E48A:
+      type: "lambda-SoftwareApplication"
+      description: null
+      properties:
+        - Code: "{\"S3Bucket\":\"cdk-hnb659fds-assets-123456789012-eu-central-1\"\
+            ,\"S3Key\":\"1b413f3454e19bed30ae14d06913bad1865512e51b2e1203843c07aef6db955b.zip\"\
+            }"
+        - Environment: "{\"Variables\":{\"PRIMARY_KEY\":\"itemId\",\"TABLE_NAME\"\
+            :{\"Ref\":\"items07D08F4B\"}}}"
+        - Handler: "index.handler"
+        - Runtime: "nodejs24.x"
+      operations: []
+      artifacts: []
+  - updateItemFunction59415205:
+      type: "lambda-SoftwareApplication"
+      description: null
+      properties:
+        - Code: "{\"S3Bucket\":\"cdk-hnb659fds-assets-123456789012-eu-central-1\"\
+            ,\"S3Key\":\"93d3c5b519ac25921c2ef5a778fe63a207120b4c51d8d81cf66e2dd566cfd275.zip\"\
+            }"
+        - Environment: "{\"Variables\":{\"PRIMARY_KEY\":\"itemId\",\"TABLE_NAME\"\
+            :{\"Ref\":\"items07D08F4B\"}}}"
+        - Handler: "index.handler"
+        - Runtime: "nodejs24.x"
+      operations: []
+      artifacts: []
+  - items07D08F4B:
+      type: "dynamodb-DatabaseSystem"
+      description: null
+      properties:
+        - AttributeDefinitions: "[{\"AttributeName\":\"itemId\",\"AttributeType\"\
+            :\"S\"}]"
+        - KeySchema: "[{\"AttributeName\":\"itemId\",\"KeyType\":\"HASH\"}]"
+        - ProvisionedThroughput: "{\"ReadCapacityUnits\":5,\"WriteCapacityUnits\"\
+            :5}"
+        - TableName: "items"
+      operations: []
+      artifacts: []
+relations:
+  - getOneItemFunctionE3257B22_HostedOn_aws:
+      type: "HostedOn"
+      description: null
+      source: "getOneItemFunctionE3257B22"
+      target: "aws"
+      properties: []
+      operations: []
+  - getAllItemsFunction0B7A913E_HostedOn_aws:
+      type: "HostedOn"
+      description: null
+      source: "getAllItemsFunction0B7A913E"
+      target: "aws"
+      properties: []
+      operations: []
+  - itemsApi28111E1C_HostedOn_aws:
+      type: "HostedOn"
+      description: null
+      source: "itemsApi28111E1C"
+      target: "aws"
+      properties: []
+      operations: []
+  - deleteItemFunction2918B1B0_HostedOn_aws:
+      type: "HostedOn"
+      description: null
+      source: "deleteItemFunction2918B1B0"
+      target: "aws"
+      properties: []
+      operations: []
+  - items07D08F4B_HostedOn_aws:
+      type: "HostedOn"
+      description: null
+      source: "items07D08F4B"
+      target: "aws"
+      properties: []
+      operations: []
+  - createItemFunction8D47E48A_HostedOn_aws:
+      type: "HostedOn"
+      description: null
+      source: "createItemFunction8D47E48A"
+      target: "aws"
+      properties: []
+      operations: []
+  - updateItemFunction59415205_HostedOn_aws:
+      type: "HostedOn"
+      description: null
+      source: "updateItemFunction59415205"
+      target: "aws"
+      properties: []
+      operations: []
+component_types:
+  - BaseType:
+      extends: "-"
+      description: null
+      properties: []
+      operations: []
+  - SoftwareApplication:
+      extends: "BaseType"
+      description: null
+      properties: []
+      operations: []
+  - Storage:
+      extends: "BaseType"
+      description: null
+      properties: []
+      operations: []
+  - DatabaseSystem:
+      extends: "SoftwareApplication"
+      description: null
+      properties: []
+      operations: []
+  - ContainerPlatform:
+      extends: "BaseType"
+      description: null
+      properties: []
+      operations: []
+  - KubernetesCluster:
+      extends: "ContainerPlatform"
+      description: null
+      properties: []
+      operations: []
+  - MessageBroker:
+      extends: "SoftwareApplication"
+      description: null
+      properties: []
+      operations: []
+  - CloudProvider:
+      extends: "BaseType"
+      description: null
+      properties: []
+      operations: []
+  - Platform:
+      extends: "BaseType"
+      description: null
+      properties: []
+      operations: []
+  - PaaS:
+      extends: "Platform"
+      description: null
+      properties: []
+      operations: []
+  - SaaS:
+      extends: "Platform"
+      description: null
+      properties: []
+      operations: []
+  - lambda-SoftwareApplication:
+      extends: "SoftwareApplication"
+      description: null
+      properties: []
+      operations: []
+  - apigateway-SoftwareApplication:
+      extends: "SoftwareApplication"
+      description: null
+      properties: []
+      operations: []
+  - dynamodb-DatabaseSystem:
+      extends: "DatabaseSystem"
+      description: null
+      properties: []
+      operations: []
+relation_types:
+  - DependsOn:
+      extends: "-"
+      description: null
+      properties: []
+      operations: []
+  - HostedOn:
+      extends: "DependsOn"
+      description: null
+      properties: []
+      operations: []
+  - AttachesTo:
+      extends: "DependsOn"
+      description: null
+      properties:
+        - location:
+            type: "STRING"
+            required: false
+            default_value: ""
+      operations: []
+  - ConnectsTo:
+      extends: "DependsOn"
+      description: null
+      properties: []
+      operations: []

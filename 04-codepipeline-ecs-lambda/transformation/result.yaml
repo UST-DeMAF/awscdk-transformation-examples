@@ -1,0 +1,115 @@
+properties: []
+components:
+  - aws:
+      type: "CloudProvider"
+      description: null
+      properties: []
+      operations: []
+      artifacts: []
+  - pipelinePipelineArtifactsBucketC2CD5B5E:
+      type: "s3-Storage"
+      description: null
+      properties:
+        - BucketEncryption: "{\"ServerSideEncryptionConfiguration\":[{\"ServerSideEncryptionByDefault\"\
+            :{\"KMSMasterKeyID\":{\"Fn::GetAtt\":[\"pipelinePipelineArtifactsBucketEncryptionKey56EE9D50\"\
+            ,\"Arn\"]},\"SSEAlgorithm\":\"aws:kms\"}}]}"
+        - PublicAccessBlockConfiguration: "{\"BlockPublicAcls\":true,\"BlockPublicPolicy\"\
+            :true,\"IgnorePublicAcls\":true,\"RestrictPublicBuckets\":true}"
+        - Tags: "[{\"Key\":\"environment\",\"Value\":\"dev\"},{\"Key\":\"managedBy\"\
+            ,\"Value\":\"cdk\"}]"
+      operations: []
+      artifacts: []
+relations:
+  - pipelinePipelineArtifactsBucketC2CD5B5E_HostedOn_aws:
+      type: "HostedOn"
+      description: null
+      source: "pipelinePipelineArtifactsBucketC2CD5B5E"
+      target: "aws"
+      properties: []
+      operations: []
+component_types:
+  - BaseType:
+      extends: "-"
+      description: null
+      properties: []
+      operations: []
+  - SoftwareApplication:
+      extends: "BaseType"
+      description: null
+      properties: []
+      operations: []
+  - Storage:
+      extends: "BaseType"
+      description: null
+      properties: []
+      operations: []
+  - DatabaseSystem:
+      extends: "SoftwareApplication"
+      description: null
+      properties: []
+      operations: []
+  - ContainerPlatform:
+      extends: "BaseType"
+      description: null
+      properties: []
+      operations: []
+  - KubernetesCluster:
+      extends: "ContainerPlatform"
+      description: null
+      properties: []
+      operations: []
+  - MessageBroker:
+      extends: "SoftwareApplication"
+      description: null
+      properties: []
+      operations: []
+  - CloudProvider:
+      extends: "BaseType"
+      description: null
+      properties: []
+      operations: []
+  - Platform:
+      extends: "BaseType"
+      description: null
+      properties: []
+      operations: []
+  - PaaS:
+      extends: "Platform"
+      description: null
+      properties: []
+      operations: []
+  - SaaS:
+      extends: "Platform"
+      description: null
+      properties: []
+      operations: []
+  - s3-Storage:
+      extends: "Storage"
+      description: null
+      properties: []
+      operations: []
+relation_types:
+  - DependsOn:
+      extends: "-"
+      description: null
+      properties: []
+      operations: []
+  - HostedOn:
+      extends: "DependsOn"
+      description: null
+      properties: []
+      operations: []
+  - AttachesTo:
+      extends: "DependsOn"
+      description: null
+      properties:
+        - location:
+            type: "STRING"
+            required: false
+            default_value: ""
+      operations: []
+  - ConnectsTo:
+      extends: "DependsOn"
+      description: null
+      properties: []
+      operations: []
