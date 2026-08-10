@@ -6,6 +6,10 @@ dedicated VPC with a managed node group. On top of the cluster it installs sever
 Container Insights, the AWS Load Balancer Controller, Metrics Server, Chaos Mesh (via Helm), and
 the Yelb sample application (via Kubernetes manifests).
 
+## Architecture
+
+![Architecture](diagram/05-aiops-eks-workshop.png)
+
 ## Transformation input
 
 The `cdk.out/` directory is the input to the CDK → EDMM transformation. The cdk-plugin parser only
