@@ -47,10 +47,8 @@ components:
         - LoadBalancerAttributes: "[{\"Key\":\"deletion_protection.enabled\",\"Value\"\
             :\"false\"}]"
         - Scheme: "internet-facing"
-        - SecurityGroups: "[{\"Fn::GetAtt\":[\"FargateServiceLBSecurityGroup5F444C78\"\
-            ,\"GroupId\"]}]"
-        - Subnets: "[{\"Ref\":\"VpcPublicSubnet1Subnet5C2D37C4\"},{\"Ref\":\"VpcPublicSubnet2Subnet691E08A3\"\
-            }]"
+        - SecurityGroups: "FargateServiceLBSecurityGroup5F444C78"
+        - Subnets: "10.0.0.0/18,10.0.64.0/18"
         - Type: "application"
       operations: []
       artifacts: []
@@ -60,99 +58,12 @@ components:
       properties: []
       operations: []
       artifacts: []
-  - VpcPrivateSubnet1Subnet536B997A:
-      type: "subnet-ContainerPlatform"
-      description: null
-      properties:
-        - AvailabilityZone: "eu-central-1a"
-        - CidrBlock: "10.0.128.0/18"
-        - MapPublicIpOnLaunch: "false"
-        - Tags: "[{\"Key\":\"aws-cdk:subnet-name\",\"Value\":\"Private\"},{\"Key\"\
-            :\"aws-cdk:subnet-type\",\"Value\":\"Private\"},{\"Key\":\"Name\",\"Value\"\
-            :\"EcsFargateStack/Vpc/PrivateSubnet1\"}]"
-      operations: []
-      artifacts: []
-  - VpcPublicSubnet2Subnet691E08A3:
-      type: "subnet-ContainerPlatform"
-      description: null
-      properties:
-        - AvailabilityZone: "eu-central-1b"
-        - CidrBlock: "10.0.64.0/18"
-        - MapPublicIpOnLaunch: "true"
-        - Tags: "[{\"Key\":\"aws-cdk:subnet-name\",\"Value\":\"Public\"},{\"Key\"\
-            :\"aws-cdk:subnet-type\",\"Value\":\"Public\"},{\"Key\":\"Name\",\"Value\"\
-            :\"EcsFargateStack/Vpc/PublicSubnet2\"}]"
-      operations: []
-      artifacts: []
-  - VpcPrivateSubnet2Subnet3788AAA1:
-      type: "subnet-ContainerPlatform"
-      description: null
-      properties:
-        - AvailabilityZone: "eu-central-1b"
-        - CidrBlock: "10.0.192.0/18"
-        - MapPublicIpOnLaunch: "false"
-        - Tags: "[{\"Key\":\"aws-cdk:subnet-name\",\"Value\":\"Private\"},{\"Key\"\
-            :\"aws-cdk:subnet-type\",\"Value\":\"Private\"},{\"Key\":\"Name\",\"Value\"\
-            :\"EcsFargateStack/Vpc/PrivateSubnet2\"}]"
-      operations: []
-      artifacts: []
-  - VpcPublicSubnet1Subnet5C2D37C4:
-      type: "subnet-ContainerPlatform"
-      description: null
-      properties:
-        - AvailabilityZone: "eu-central-1a"
-        - CidrBlock: "10.0.0.0/18"
-        - MapPublicIpOnLaunch: "true"
-        - Tags: "[{\"Key\":\"aws-cdk:subnet-name\",\"Value\":\"Public\"},{\"Key\"\
-            :\"aws-cdk:subnet-type\",\"Value\":\"Public\"},{\"Key\":\"Name\",\"Value\"\
-            :\"EcsFargateStack/Vpc/PublicSubnet1\"}]"
-      operations: []
-      artifacts: []
-  - Vpc8378EB38:
-      type: "vpc-ContainerPlatform"
-      description: null
-      properties:
-        - CidrBlock: "10.0.0.0/16"
-        - EnableDnsHostnames: "true"
-        - EnableDnsSupport: "true"
-        - InstanceTenancy: "default"
-        - Tags: "[{\"Key\":\"Name\",\"Value\":\"EcsFargateStack/Vpc\"}]"
-      operations: []
-      artifacts: []
 relations:
   - FargateServiceECC8084D_ConnectsTo_FargateServiceTaskDef940E3A80:
       type: "ConnectsTo"
       description: null
       source: "FargateServiceECC8084D"
       target: "FargateServiceTaskDef940E3A80"
-      properties: []
-      operations: []
-  - VpcPrivateSubnet1Subnet536B997A_ConnectsTo_Vpc8378EB38:
-      type: "ConnectsTo"
-      description: null
-      source: "VpcPrivateSubnet1Subnet536B997A"
-      target: "Vpc8378EB38"
-      properties: []
-      operations: []
-  - VpcPublicSubnet2Subnet691E08A3_ConnectsTo_Vpc8378EB38:
-      type: "ConnectsTo"
-      description: null
-      source: "VpcPublicSubnet2Subnet691E08A3"
-      target: "Vpc8378EB38"
-      properties: []
-      operations: []
-  - VpcPrivateSubnet2Subnet3788AAA1_ConnectsTo_Vpc8378EB38:
-      type: "ConnectsTo"
-      description: null
-      source: "VpcPrivateSubnet2Subnet3788AAA1"
-      target: "Vpc8378EB38"
-      properties: []
-      operations: []
-  - VpcPublicSubnet1Subnet5C2D37C4_ConnectsTo_Vpc8378EB38:
-      type: "ConnectsTo"
-      description: null
-      source: "VpcPublicSubnet1Subnet5C2D37C4"
-      target: "Vpc8378EB38"
       properties: []
       operations: []
   - FargateServiceECC8084D_HostedOn_ClusterEB0386A7:
@@ -180,41 +91,6 @@ relations:
       type: "HostedOn"
       description: null
       source: "ClusterEB0386A7"
-      target: "aws"
-      properties: []
-      operations: []
-  - VpcPrivateSubnet1Subnet536B997A_HostedOn_aws:
-      type: "HostedOn"
-      description: null
-      source: "VpcPrivateSubnet1Subnet536B997A"
-      target: "aws"
-      properties: []
-      operations: []
-  - VpcPublicSubnet2Subnet691E08A3_HostedOn_aws:
-      type: "HostedOn"
-      description: null
-      source: "VpcPublicSubnet2Subnet691E08A3"
-      target: "aws"
-      properties: []
-      operations: []
-  - VpcPrivateSubnet2Subnet3788AAA1_HostedOn_aws:
-      type: "HostedOn"
-      description: null
-      source: "VpcPrivateSubnet2Subnet3788AAA1"
-      target: "aws"
-      properties: []
-      operations: []
-  - VpcPublicSubnet1Subnet5C2D37C4_HostedOn_aws:
-      type: "HostedOn"
-      description: null
-      source: "VpcPublicSubnet1Subnet5C2D37C4"
-      target: "aws"
-      properties: []
-      operations: []
-  - Vpc8378EB38_HostedOn_aws:
-      type: "HostedOn"
-      description: null
-      source: "Vpc8378EB38"
       target: "aws"
       properties: []
       operations: []
@@ -269,8 +145,8 @@ component_types:
       description: null
       properties: []
       operations: []
-  - SaaS:
-      extends: "Platform"
+  - Compute:
+      extends: "BaseType"
       description: null
       properties: []
       operations: []
@@ -285,16 +161,6 @@ component_types:
       properties: []
       operations: []
   - ecs-ContainerPlatform:
-      extends: "ContainerPlatform"
-      description: null
-      properties: []
-      operations: []
-  - subnet-ContainerPlatform:
-      extends: "ContainerPlatform"
-      description: null
-      properties: []
-      operations: []
-  - vpc-ContainerPlatform:
       extends: "ContainerPlatform"
       description: null
       properties: []

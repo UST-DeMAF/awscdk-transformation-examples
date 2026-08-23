@@ -78,8 +78,8 @@ component_types:
       description: null
       properties: []
       operations: []
-  - SaaS:
-      extends: "Platform"
+  - Compute:
+      extends: "BaseType"
       description: null
       properties: []
       operations: []

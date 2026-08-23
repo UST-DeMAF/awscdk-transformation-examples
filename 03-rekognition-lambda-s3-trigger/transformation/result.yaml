@@ -6,19 +6,6 @@ components:
       properties: []
       operations: []
       artifacts: []
-  - RekFunction9837D13D:
-      type: "lambda-SoftwareApplication"
-      description: null
-      properties:
-        - Code: "{\"S3Bucket\":\"cdk-hnb659fds-assets-123456789012-eu-central-1\"\
-            ,\"S3Key\":\"7604437bf41e8ceccf8c2ca2c17b8aa7ef4d3e46d31e1a96cca4ead1886dd3f4.zip\"\
-            }"
-        - Environment: "{\"Variables\":{\"BUCKET_NAME\":{\"Ref\":\"Bucket83908E77\"\
-            },\"TABLE_NAME\":{\"Ref\":\"Classifications0C921F6C\"}}}"
-        - Handler: "rekfunction.handler"
-        - Runtime: "nodejs24.x"
-      operations: []
-      artifacts: []
   - Bucket83908E77:
       type: "s3-Storage"
       description: null
@@ -35,6 +22,19 @@ components:
         - KeySchema: "[{\"AttributeName\":\"image_name\",\"KeyType\":\"HASH\"}]"
         - ProvisionedThroughput: "{\"ReadCapacityUnits\":5,\"WriteCapacityUnits\"\
             :5}"
+      operations: []
+      artifacts: []
+  - RekFunction9837D13D:
+      type: "lambda-Compute"
+      description: null
+      properties:
+        - Code: "{\"S3Bucket\":\"cdk-hnb659fds-assets-123456789012-eu-central-1\"\
+            ,\"S3Key\":\"7604437bf41e8ceccf8c2ca2c17b8aa7ef4d3e46d31e1a96cca4ead1886dd3f4.zip\"\
+            }"
+        - Environment: "{\"Variables\":{\"BUCKET_NAME\":{\"Ref\":\"Bucket83908E77\"\
+            },\"TABLE_NAME\":{\"Ref\":\"Classifications0C921F6C\"}}}"
+        - Handler: "rekfunction.handler"
+        - Runtime: "nodejs24.x"
       operations: []
       artifacts: []
 relations:
@@ -110,13 +110,8 @@ component_types:
       description: null
       properties: []
       operations: []
-  - SaaS:
-      extends: "Platform"
-      description: null
-      properties: []
-      operations: []
-  - lambda-SoftwareApplication:
-      extends: "SoftwareApplication"
+  - Compute:
+      extends: "BaseType"
       description: null
       properties: []
       operations: []
@@ -127,6 +122,11 @@ component_types:
       operations: []
   - dynamodb-DatabaseSystem:
       extends: "DatabaseSystem"
+      description: null
+      properties: []
+      operations: []
+  - lambda-Compute:
+      extends: "Compute"
       description: null
       properties: []
       operations: []
