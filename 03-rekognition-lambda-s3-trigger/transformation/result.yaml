@@ -38,6 +38,22 @@ components:
       operations: []
       artifacts: []
 relations:
+  - RekFunction9837D13D_ConnectsTo_Classifications0C921F6C:
+      type: "ConnectsTo"
+      description: null
+      source: "RekFunction9837D13D"
+      target: "Classifications0C921F6C"
+      properties:
+        - accessLevel: "readwrite"
+      operations: []
+  - RekFunction9837D13D_ConnectsTo_Bucket83908E77:
+      type: "ConnectsTo"
+      description: null
+      source: "RekFunction9837D13D"
+      target: "Bucket83908E77"
+      properties:
+        - accessLevel: "readwrite"
+      operations: []
   - RekFunction9837D13D_HostedOn_aws:
       type: "HostedOn"
       description: null
@@ -153,5 +169,9 @@ relation_types:
   - ConnectsTo:
       extends: "DependsOn"
       description: null
-      properties: []
+      properties:
+        - accessLevel:
+            type: "STRING"
+            required: false
+            default_value: ""
       operations: []

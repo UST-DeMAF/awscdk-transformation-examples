@@ -119,5 +119,9 @@ relation_types:
   - ConnectsTo:
       extends: "DependsOn"
       description: null
-      properties: []
+      properties:
+        - accessLevel:
+            type: "STRING"
+            required: false
+            default_value: ""
       operations: []

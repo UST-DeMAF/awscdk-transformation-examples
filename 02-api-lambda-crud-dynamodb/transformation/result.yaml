@@ -91,6 +91,46 @@ components:
       operations: []
       artifacts: []
 relations:
+  - getOneItemFunctionE3257B22_ConnectsTo_items07D08F4B:
+      type: "ConnectsTo"
+      description: null
+      source: "getOneItemFunctionE3257B22"
+      target: "items07D08F4B"
+      properties:
+        - accessLevel: "readwrite"
+      operations: []
+  - getAllItemsFunction0B7A913E_ConnectsTo_items07D08F4B:
+      type: "ConnectsTo"
+      description: null
+      source: "getAllItemsFunction0B7A913E"
+      target: "items07D08F4B"
+      properties:
+        - accessLevel: "readwrite"
+      operations: []
+  - deleteItemFunction2918B1B0_ConnectsTo_items07D08F4B:
+      type: "ConnectsTo"
+      description: null
+      source: "deleteItemFunction2918B1B0"
+      target: "items07D08F4B"
+      properties:
+        - accessLevel: "readwrite"
+      operations: []
+  - createItemFunction8D47E48A_ConnectsTo_items07D08F4B:
+      type: "ConnectsTo"
+      description: null
+      source: "createItemFunction8D47E48A"
+      target: "items07D08F4B"
+      properties:
+        - accessLevel: "readwrite"
+      operations: []
+  - updateItemFunction59415205_ConnectsTo_items07D08F4B:
+      type: "ConnectsTo"
+      description: null
+      source: "updateItemFunction59415205"
+      target: "items07D08F4B"
+      properties:
+        - accessLevel: "readwrite"
+      operations: []
   - getOneItemFunctionE3257B22_HostedOn_aws:
       type: "HostedOn"
       description: null
@@ -234,5 +274,9 @@ relation_types:
   - ConnectsTo:
       extends: "DependsOn"
       description: null
-      properties: []
+      properties:
+        - accessLevel:
+            type: "STRING"
+            required: false
+            default_value: ""
       operations: []
