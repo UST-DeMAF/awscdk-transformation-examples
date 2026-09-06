@@ -1,0 +1,174 @@
+properties: []
+components:
+  - aws:
+      type: "CloudProvider"
+      description: null
+      properties:
+        - region: "<region>"
+      operations: []
+      artifacts: []
+  - eksCluster:
+      type: "eks-KubernetesCluster"
+      description: null
+      properties:
+        - name: "eks-aiops"
+        - kubernetesVersion: "1.21"
+      operations: []
+      artifacts: []
+  - nodeGroup:
+      type: "nodegroup-Compute"
+      description: null
+      properties:
+        - desiredSize: "2"
+        - minSize: "1"
+        - maxSize: "4"
+        - subnets: "<privateSubnetCidrs>"
+      operations: []
+      artifacts: []
+  - albController:
+      type: "aws-load-balancer-controller-SoftwareApplication"
+      description: null
+      properties:
+        - deployedVia: "Helm chart or Kubernetes manifest"
+        - name: "AWS Load Balancer Controller"
+      operations: []
+      artifacts: []
+  - metricsServer:
+      type: "metrics-server-SoftwareApplication"
+      description: null
+      properties:
+        - deployedVia: "Helm chart or Kubernetes manifest"
+        - name: "Metrics Server"
+      operations: []
+      artifacts: []
+  - chaosMesh:
+      type: "chaos-mesh-SoftwareApplication"
+      description: null
+      properties:
+        - deployedVia: "Helm chart or Kubernetes manifest"
+        - name: "Chaos Mesh"
+      operations: []
+      artifacts: []
+  - yelbApp:
+      type: "yelb-SoftwareApplication"
+      description: null
+      properties:
+        - deployedVia: "Helm chart or Kubernetes manifest"
+        - name: "Yelb sample app"
+      operations: []
+      artifacts: []
+relations:
+  - nodeGroup_HostedOn_eksCluster:
+      type: "HostedOn"
+      description: null
+      source: "nodeGroup"
+      target: "eksCluster"
+      properties: []
+      operations: []
+  - albController_HostedOn_eksCluster:
+      type: "HostedOn"
+      description: null
+      source: "albController"
+      target: "eksCluster"
+      properties: []
+      operations: []
+  - metricsServer_HostedOn_eksCluster:
+      type: "HostedOn"
+      description: null
+      source: "metricsServer"
+      target: "eksCluster"
+      properties: []
+      operations: []
+  - chaosMesh_HostedOn_eksCluster:
+      type: "HostedOn"
+      description: null
+      source: "chaosMesh"
+      target: "eksCluster"
+      properties: []
+      operations: []
+  - yelbApp_HostedOn_eksCluster:
+      type: "HostedOn"
+      description: null
+      source: "yelbApp"
+      target: "eksCluster"
+      properties: []
+      operations: []
+  - eksCluster_HostedOn_aws:
+      type: "HostedOn"
+      description: null
+      source: "eksCluster"
+      target: "aws"
+      properties: []
+      operations: []
+component_types:
+  - BaseType:
+      extends: "-"
+      description: null
+      properties: []
+      operations: []
+  - CloudProvider:
+      extends: "BaseType"
+      description: null
+      properties: []
+      operations: []
+  - ContainerPlatform:
+      extends: "BaseType"
+      description: null
+      properties: []
+      operations: []
+  - KubernetesCluster:
+      extends: "ContainerPlatform"
+      description: null
+      properties: []
+      operations: []
+  - eks-KubernetesCluster:
+      extends: "KubernetesCluster"
+      description: null
+      properties: []
+      operations: []
+  - Compute:
+      extends: "BaseType"
+      description: null
+      properties: []
+      operations: []
+  - nodegroup-Compute:
+      extends: "Compute"
+      description: null
+      properties: []
+      operations: []
+  - SoftwareApplication:
+      extends: "BaseType"
+      description: null
+      properties: []
+      operations: []
+  - aws-load-balancer-controller-SoftwareApplication:
+      extends: "SoftwareApplication"
+      description: null
+      properties: []
+      operations: []
+  - metrics-server-SoftwareApplication:
+      extends: "SoftwareApplication"
+      description: null
+      properties: []
+      operations: []
+  - chaos-mesh-SoftwareApplication:
+      extends: "SoftwareApplication"
+      description: null
+      properties: []
+      operations: []
+  - yelb-SoftwareApplication:
+      extends: "SoftwareApplication"
+      description: null
+      properties: []
+      operations: []
+relation_types:
+  - DependsOn:
+      extends: "-"
+      description: null
+      properties: []
+      operations: []
+  - HostedOn:
+      extends: "DependsOn"
+      description: null
+      properties: []
+      operations: []

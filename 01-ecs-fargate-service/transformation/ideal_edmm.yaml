@@ -1,0 +1,151 @@
+properties: []
+components:
+  - aws:
+      type: "CloudProvider"
+      description: null
+      properties:
+        - region: "<region>"
+      operations: []
+      artifacts: []
+  - ecsCluster:
+      type: "ecs-ContainerPlatform"
+      description: null
+      properties: []
+      operations: []
+      artifacts: []
+  - alb:
+      type: "loadbalancer-SoftwareApplication"
+      description: null
+      properties:
+        - scheme: "internet-facing"
+        - type: "application"
+        - port: "80"
+        - protocol: "HTTP"
+        - subnets: "<publicSubnetCidrs>"
+      operations: []
+      artifacts: []
+  - nginxService:
+      type: "nginx-SoftwareApplication"
+      description: null
+      properties:
+        - desiredCount: "1"
+        - launchType: "FARGATE"
+        - subnets: "<privateSubnetCidrs>"
+      operations: []
+      artifacts: []
+  - taskDefinition:
+      type: "taskdefinition-SoftwareApplication"
+      description: null
+      properties:
+        - containerName: "web"
+        - containerPort: "80"
+        - protocol: "tcp"
+        - cpu: "256"
+        - memory: "512"
+        - networkMode: "awsvpc"
+      operations: []
+      artifacts:
+        - container_image:
+            name: "public.ecr.aws/nginx/nginx:latest"
+            fileURI: "public.ecr.aws/nginx/nginx:latest"
+relations:
+  - alb_ConnectsTo_nginxService:
+      type: "ConnectsTo"
+      description: null
+      source: "alb"
+      target: "nginxService"
+      properties:
+        - accessLevel: "invoke"
+      operations: []
+  - nginxService_DependsOn_taskDefinition:
+      type: "DependsOn"
+      description: null
+      source: "nginxService"
+      target: "taskDefinition"
+      properties: []
+      operations: []
+  - taskDefinition_HostedOn_aws:
+      type: "HostedOn"
+      description: null
+      source: "taskDefinition"
+      target: "aws"
+      properties: []
+      operations: []
+  - nginxService_HostedOn_ecsCluster:
+      type: "HostedOn"
+      description: null
+      source: "nginxService"
+      target: "ecsCluster"
+      properties: []
+      operations: []
+  - ecsCluster_HostedOn_aws:
+      type: "HostedOn"
+      description: null
+      source: "ecsCluster"
+      target: "aws"
+      properties: []
+      operations: []
+  - alb_HostedOn_aws:
+      type: "HostedOn"
+      description: null
+      source: "alb"
+      target: "aws"
+      properties: []
+      operations: []
+component_types:
+  - BaseType:
+      extends: "-"
+      description: null
+      properties: []
+      operations: []
+  - CloudProvider:
+      extends: "BaseType"
+      description: null
+      properties: []
+      operations: []
+  - ContainerPlatform:
+      extends: "BaseType"
+      description: null
+      properties: []
+      operations: []
+  - ecs-ContainerPlatform:
+      extends: "ContainerPlatform"
+      description: null
+      properties: []
+      operations: []
+  - SoftwareApplication:
+      extends: "BaseType"
+      description: null
+      properties: []
+      operations: []
+  - loadbalancer-SoftwareApplication:
+      extends: "SoftwareApplication"
+      description: null
+      properties: []
+      operations: []
+  - nginx-SoftwareApplication:
+      extends: "SoftwareApplication"
+      description: null
+      properties: []
+      operations: []
+  - taskdefinition-SoftwareApplication:
+      extends: "SoftwareApplication"
+      description: null
+      properties: []
+      operations: []
+relation_types:
+  - DependsOn:
+      extends: "-"
+      description: null
+      properties: []
+      operations: []
+  - HostedOn:
+      extends: "DependsOn"
+      description: null
+      properties: []
+      operations: []
+  - ConnectsTo:
+      extends: "DependsOn"
+      description: null
+      properties: []
+      operations: []

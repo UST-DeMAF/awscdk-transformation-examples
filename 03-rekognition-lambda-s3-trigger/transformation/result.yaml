@@ -1,0 +1,180 @@
+properties: []
+components:
+  - aws:
+      type: "CloudProvider"
+      description: null
+      properties: []
+      operations: []
+      artifacts: []
+  - Bucket83908E77:
+      type: "s3-Storage"
+      description: null
+      properties:
+        - Tags: "[{\"Key\":\"aws-cdk:auto-delete-objects\",\"Value\":\"true\"}]"
+      operations: []
+      artifacts: []
+  - Classifications0C921F6C:
+      type: "dynamodb-DatabaseSystem"
+      description: null
+      properties:
+        - AttributeDefinitions: "[{\"AttributeName\":\"image_name\",\"AttributeType\"\
+            :\"S\"}]"
+        - KeySchema: "[{\"AttributeName\":\"image_name\",\"KeyType\":\"HASH\"}]"
+        - ProvisionedThroughput: "{\"ReadCapacityUnits\":5,\"WriteCapacityUnits\"\
+            :5}"
+      operations: []
+      artifacts: []
+  - RekFunction9837D13D:
+      type: "lambda-Compute"
+      description: null
+      properties:
+        - Code: "{\"S3Bucket\":\"cdk-hnb659fds-assets-123456789012-eu-central-1\"\
+            ,\"S3Key\":\"7604437bf41e8ceccf8c2ca2c17b8aa7ef4d3e46d31e1a96cca4ead1886dd3f4.zip\"\
+            }"
+        - Environment: "{\"Variables\":{\"BUCKET_NAME\":{\"Ref\":\"Bucket83908E77\"\
+            },\"TABLE_NAME\":{\"Ref\":\"Classifications0C921F6C\"}}}"
+        - Handler: "rekfunction.handler"
+        - Runtime: "nodejs24.x"
+      operations: []
+      artifacts: []
+relations:
+  - RekFunction9837D13D_ConnectsTo_Classifications0C921F6C:
+      type: "ConnectsTo"
+      description: null
+      source: "RekFunction9837D13D"
+      target: "Classifications0C921F6C"
+      properties:
+        - accessLevel: "readwrite"
+      operations: []
+  - RekFunction9837D13D_ConnectsTo_Bucket83908E77:
+      type: "ConnectsTo"
+      description: null
+      source: "RekFunction9837D13D"
+      target: "Bucket83908E77"
+      properties:
+        - accessLevel: "readwrite"
+      operations: []
+  - Bucket83908E77_ConnectsTo_RekFunction9837D13D:
+      type: "ConnectsTo"
+      description: null
+      source: "Bucket83908E77"
+      target: "RekFunction9837D13D"
+      properties:
+        - accessLevel: "invoke"
+      operations: []
+  - RekFunction9837D13D_HostedOn_aws:
+      type: "HostedOn"
+      description: null
+      source: "RekFunction9837D13D"
+      target: "aws"
+      properties: []
+      operations: []
+  - Bucket83908E77_HostedOn_aws:
+      type: "HostedOn"
+      description: null
+      source: "Bucket83908E77"
+      target: "aws"
+      properties: []
+      operations: []
+  - Classifications0C921F6C_HostedOn_aws:
+      type: "HostedOn"
+      description: null
+      source: "Classifications0C921F6C"
+      target: "aws"
+      properties: []
+      operations: []
+component_types:
+  - BaseType:
+      extends: "-"
+      description: null
+      properties: []
+      operations: []
+  - SoftwareApplication:
+      extends: "BaseType"
+      description: null
+      properties: []
+      operations: []
+  - Storage:
+      extends: "BaseType"
+      description: null
+      properties: []
+      operations: []
+  - DatabaseSystem:
+      extends: "SoftwareApplication"
+      description: null
+      properties: []
+      operations: []
+  - ContainerPlatform:
+      extends: "BaseType"
+      description: null
+      properties: []
+      operations: []
+  - KubernetesCluster:
+      extends: "ContainerPlatform"
+      description: null
+      properties: []
+      operations: []
+  - MessageBroker:
+      extends: "SoftwareApplication"
+      description: null
+      properties: []
+      operations: []
+  - CloudProvider:
+      extends: "BaseType"
+      description: null
+      properties: []
+      operations: []
+  - Platform:
+      extends: "BaseType"
+      description: null
+      properties: []
+      operations: []
+  - Compute:
+      extends: "BaseType"
+      description: null
+      properties: []
+      operations: []
+  - s3-Storage:
+      extends: "Storage"
+      description: null
+      properties: []
+      operations: []
+  - dynamodb-DatabaseSystem:
+      extends: "DatabaseSystem"
+      description: null
+      properties: []
+      operations: []
+  - lambda-Compute:
+      extends: "Compute"
+      description: null
+      properties: []
+      operations: []
+relation_types:
+  - DependsOn:
+      extends: "-"
+      description: null
+      properties: []
+      operations: []
+  - HostedOn:
+      extends: "DependsOn"
+      description: null
+      properties: []
+      operations: []
+  - AttachesTo:
+      extends: "DependsOn"
+      description: null
+      properties:
+        - location:
+            type: "STRING"
+            required: false
+            default_value: ""
+      operations: []
+  - ConnectsTo:
+      extends: "DependsOn"
+      description: null
+      properties:
+        - accessLevel:
+            type: "STRING"
+            required: false
+            default_value: ""
+      operations: []
