@@ -1,0 +1,145 @@
+properties: []
+components:
+  - aws:
+      type: "CloudProvider"
+      description: null
+      properties:
+        - region: "<region>"
+      operations: []
+      artifacts: []
+  - imagesBucket:
+      type: "s3-Storage"
+      description: null
+      properties:
+        - bucketName: "<bucketName>"
+        - eventNotification: "s3:ObjectCreated:*"
+      operations: []
+      artifacts: []
+  - rekFunction:
+      type: "lambda-Compute"
+      description: null
+      properties:
+        - handler: "rekfunction.handler"
+        - runtime: "nodejs24.x"
+        - BUCKET_NAME: "<bucketName>"
+        - TABLE_NAME: "<classificationsTableName>"
+      operations: []
+      artifacts:
+        - lambda_package:
+            name: "<assetKey>.zip"
+            fileURI: "<assetKey>.zip"
+  - classificationsTable:
+      type: "dynamodb-DatabaseSystem"
+      description: null
+      properties:
+        - tableName: "<classificationsTableName>"
+      operations: []
+      artifacts: []
+relations:
+  - imagesBucket_ConnectsTo_rekFunction:
+      type: "ConnectsTo"
+      description: null
+      source: "imagesBucket"
+      target: "rekFunction"
+      properties:
+        - accessLevel: "invoke"
+      operations: []
+  - rekFunction_ConnectsTo_imagesBucket:
+      type: "ConnectsTo"
+      description: null
+      source: "rekFunction"
+      target: "imagesBucket"
+      properties:
+        - accessLevel: "readwrite"
+      operations: []
+  - rekFunction_ConnectsTo_classificationsTable:
+      type: "ConnectsTo"
+      description: null
+      source: "rekFunction"
+      target: "classificationsTable"
+      properties:
+        - accessLevel: "readwrite"
+      operations: []
+  - imagesBucket_HostedOn_aws:
+      type: "HostedOn"
+      description: null
+      source: "imagesBucket"
+      target: "aws"
+      properties: []
+      operations: []
+  - rekFunction_HostedOn_aws:
+      type: "HostedOn"
+      description: null
+      source: "rekFunction"
+      target: "aws"
+      properties: []
+      operations: []
+  - classificationsTable_HostedOn_aws:
+      type: "HostedOn"
+      description: null
+      source: "classificationsTable"
+      target: "aws"
+      properties: []
+      operations: []
+component_types:
+  - BaseType:
+      extends: "-"
+      description: null
+      properties: []
+      operations: []
+  - CloudProvider:
+      extends: "BaseType"
+      description: null
+      properties: []
+      operations: []
+  - Storage:
+      extends: "BaseType"
+      description: null
+      properties: []
+      operations: []
+  - s3-Storage:
+      extends: "Storage"
+      description: null
+      properties: []
+      operations: []
+  - Compute:
+      extends: "BaseType"
+      description: null
+      properties: []
+      operations: []
+  - lambda-Compute:
+      extends: "Compute"
+      description: null
+      properties: []
+      operations: []
+  - SoftwareApplication:
+      extends: "BaseType"
+      description: null
+      properties: []
+      operations: []
+  - DatabaseSystem:
+      extends: "SoftwareApplication"
+      description: null
+      properties: []
+      operations: []
+  - dynamodb-DatabaseSystem:
+      extends: "DatabaseSystem"
+      description: null
+      properties: []
+      operations: []
+relation_types:
+  - DependsOn:
+      extends: "-"
+      description: null
+      properties: []
+      operations: []
+  - HostedOn:
+      extends: "DependsOn"
+      description: null
+      properties: []
+      operations: []
+  - ConnectsTo:
+      extends: "DependsOn"
+      description: null
+      properties: []
+      operations: []

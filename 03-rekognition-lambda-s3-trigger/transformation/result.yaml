@@ -54,6 +54,14 @@ relations:
       properties:
         - accessLevel: "readwrite"
       operations: []
+  - Bucket83908E77_ConnectsTo_RekFunction9837D13D:
+      type: "ConnectsTo"
+      description: null
+      source: "Bucket83908E77"
+      target: "RekFunction9837D13D"
+      properties:
+        - accessLevel: "invoke"
+      operations: []
   - RekFunction9837D13D_HostedOn_aws:
       type: "HostedOn"
       description: null
@@ -118,11 +126,6 @@ component_types:
       operations: []
   - Platform:
       extends: "BaseType"
-      description: null
-      properties: []
-      operations: []
-  - PaaS:
-      extends: "Platform"
       description: null
       properties: []
       operations: []

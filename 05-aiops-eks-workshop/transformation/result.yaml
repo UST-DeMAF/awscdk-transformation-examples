@@ -81,11 +81,6 @@ component_types:
       description: null
       properties: []
       operations: []
-  - PaaS:
-      extends: "Platform"
-      description: null
-      properties: []
-      operations: []
   - Compute:
       extends: "BaseType"
       description: null

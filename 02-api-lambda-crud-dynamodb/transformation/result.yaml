@@ -107,6 +107,46 @@ relations:
       properties:
         - accessLevel: "readwrite"
       operations: []
+  - itemsApi28111E1C_ConnectsTo_createItemFunction8D47E48A:
+      type: "ConnectsTo"
+      description: null
+      source: "itemsApi28111E1C"
+      target: "createItemFunction8D47E48A"
+      properties:
+        - accessLevel: "invoke"
+      operations: []
+  - itemsApi28111E1C_ConnectsTo_getOneItemFunctionE3257B22:
+      type: "ConnectsTo"
+      description: null
+      source: "itemsApi28111E1C"
+      target: "getOneItemFunctionE3257B22"
+      properties:
+        - accessLevel: "invoke"
+      operations: []
+  - itemsApi28111E1C_ConnectsTo_getAllItemsFunction0B7A913E:
+      type: "ConnectsTo"
+      description: null
+      source: "itemsApi28111E1C"
+      target: "getAllItemsFunction0B7A913E"
+      properties:
+        - accessLevel: "invoke"
+      operations: []
+  - itemsApi28111E1C_ConnectsTo_deleteItemFunction2918B1B0:
+      type: "ConnectsTo"
+      description: null
+      source: "itemsApi28111E1C"
+      target: "deleteItemFunction2918B1B0"
+      properties:
+        - accessLevel: "invoke"
+      operations: []
+  - itemsApi28111E1C_ConnectsTo_updateItemFunction59415205:
+      type: "ConnectsTo"
+      description: null
+      source: "itemsApi28111E1C"
+      target: "updateItemFunction59415205"
+      properties:
+        - accessLevel: "invoke"
+      operations: []
   - deleteItemFunction2918B1B0_ConnectsTo_items07D08F4B:
       type: "ConnectsTo"
       description: null
@@ -223,11 +263,6 @@ component_types:
       operations: []
   - Platform:
       extends: "BaseType"
-      description: null
-      properties: []
-      operations: []
-  - PaaS:
-      extends: "Platform"
       description: null
       properties: []
       operations: []

@@ -1,0 +1,280 @@
+properties: []
+components:
+  - aws:
+      type: "CloudProvider"
+      description: null
+      properties:
+        - region: "<region>"
+      operations: []
+      artifacts: []
+  - itemsApi:
+      type: "apigateway-SoftwareApplication"
+      description: null
+      properties:
+        - name: "Items Service"
+        - protocol: "HTTPS"
+        - paths: "/items, /items/{id}"
+      operations: []
+      artifacts: []
+  - getOneItem:
+      type: "lambda-Compute"
+      description: null
+      properties:
+        - handler: "index.handler"
+        - runtime: "nodejs24.x"
+        - PRIMARY_KEY: "itemId"
+        - TABLE_NAME: "<itemsTableName>"
+      operations: []
+      artifacts:
+        - lambda_package:
+            name: "<assetKey>.zip"
+            fileURI: "<assetKey>.zip"
+  - getAllItems:
+      type: "lambda-Compute"
+      description: null
+      properties:
+        - handler: "index.handler"
+        - runtime: "nodejs24.x"
+        - PRIMARY_KEY: "itemId"
+        - TABLE_NAME: "<itemsTableName>"
+      operations: []
+      artifacts:
+        - lambda_package:
+            name: "<assetKey>.zip"
+            fileURI: "<assetKey>.zip"
+  - createItem:
+      type: "lambda-Compute"
+      description: null
+      properties:
+        - handler: "index.handler"
+        - runtime: "nodejs24.x"
+        - PRIMARY_KEY: "itemId"
+        - TABLE_NAME: "<itemsTableName>"
+      operations: []
+      artifacts:
+        - lambda_package:
+            name: "<assetKey>.zip"
+            fileURI: "<assetKey>.zip"
+  - updateItem:
+      type: "lambda-Compute"
+      description: null
+      properties:
+        - handler: "index.handler"
+        - runtime: "nodejs24.x"
+        - PRIMARY_KEY: "itemId"
+        - TABLE_NAME: "<itemsTableName>"
+      operations: []
+      artifacts:
+        - lambda_package:
+            name: "<assetKey>.zip"
+            fileURI: "<assetKey>.zip"
+  - deleteItem:
+      type: "lambda-Compute"
+      description: null
+      properties:
+        - handler: "index.handler"
+        - runtime: "nodejs24.x"
+        - PRIMARY_KEY: "itemId"
+        - TABLE_NAME: "<itemsTableName>"
+      operations: []
+      artifacts:
+        - lambda_package:
+            name: "<assetKey>.zip"
+            fileURI: "<assetKey>.zip"
+  - itemsTable:
+      type: "dynamodb-DatabaseSystem"
+      description: null
+      properties:
+        - tableName: "items"
+        - partitionKey: "itemId"
+        - readCapacity: "5"
+        - writeCapacity: "5"
+      operations: []
+      artifacts: []
+relations:
+  - itemsApi_ConnectsTo_getOneItem:
+      type: "ConnectsTo"
+      description: null
+      source: "itemsApi"
+      target: "getOneItem"
+      properties:
+        - accessLevel: "invoke"
+      operations: []
+  - itemsApi_ConnectsTo_getAllItems:
+      type: "ConnectsTo"
+      description: null
+      source: "itemsApi"
+      target: "getAllItems"
+      properties:
+        - accessLevel: "invoke"
+      operations: []
+  - itemsApi_ConnectsTo_createItem:
+      type: "ConnectsTo"
+      description: null
+      source: "itemsApi"
+      target: "createItem"
+      properties:
+        - accessLevel: "invoke"
+      operations: []
+  - itemsApi_ConnectsTo_updateItem:
+      type: "ConnectsTo"
+      description: null
+      source: "itemsApi"
+      target: "updateItem"
+      properties:
+        - accessLevel: "invoke"
+      operations: []
+  - itemsApi_ConnectsTo_deleteItem:
+      type: "ConnectsTo"
+      description: null
+      source: "itemsApi"
+      target: "deleteItem"
+      properties:
+        - accessLevel: "invoke"
+      operations: []
+  - getOneItem_ConnectsTo_itemsTable:
+      type: "ConnectsTo"
+      description: null
+      source: "getOneItem"
+      target: "itemsTable"
+      properties:
+        - accessLevel: "readwrite"
+      operations: []
+  - getAllItems_ConnectsTo_itemsTable:
+      type: "ConnectsTo"
+      description: null
+      source: "getAllItems"
+      target: "itemsTable"
+      properties:
+        - accessLevel: "readwrite"
+      operations: []
+  - createItem_ConnectsTo_itemsTable:
+      type: "ConnectsTo"
+      description: null
+      source: "createItem"
+      target: "itemsTable"
+      properties:
+        - accessLevel: "readwrite"
+      operations: []
+  - updateItem_ConnectsTo_itemsTable:
+      type: "ConnectsTo"
+      description: null
+      source: "updateItem"
+      target: "itemsTable"
+      properties:
+        - accessLevel: "readwrite"
+      operations: []
+  - deleteItem_ConnectsTo_itemsTable:
+      type: "ConnectsTo"
+      description: null
+      source: "deleteItem"
+      target: "itemsTable"
+      properties:
+        - accessLevel: "readwrite"
+      operations: []
+  - itemsApi_HostedOn_aws:
+      type: "HostedOn"
+      description: null
+      source: "itemsApi"
+      target: "aws"
+      properties: []
+      operations: []
+  - getOneItem_HostedOn_aws:
+      type: "HostedOn"
+      description: null
+      source: "getOneItem"
+      target: "aws"
+      properties: []
+      operations: []
+  - getAllItems_HostedOn_aws:
+      type: "HostedOn"
+      description: null
+      source: "getAllItems"
+      target: "aws"
+      properties: []
+      operations: []
+  - createItem_HostedOn_aws:
+      type: "HostedOn"
+      description: null
+      source: "createItem"
+      target: "aws"
+      properties: []
+      operations: []
+  - updateItem_HostedOn_aws:
+      type: "HostedOn"
+      description: null
+      source: "updateItem"
+      target: "aws"
+      properties: []
+      operations: []
+  - deleteItem_HostedOn_aws:
+      type: "HostedOn"
+      description: null
+      source: "deleteItem"
+      target: "aws"
+      properties: []
+      operations: []
+  - itemsTable_HostedOn_aws:
+      type: "HostedOn"
+      description: null
+      source: "itemsTable"
+      target: "aws"
+      properties: []
+      operations: []
+component_types:
+  - BaseType:
+      extends: "-"
+      description: null
+      properties: []
+      operations: []
+  - CloudProvider:
+      extends: "BaseType"
+      description: null
+      properties: []
+      operations: []
+  - Compute:
+      extends: "BaseType"
+      description: null
+      properties: []
+      operations: []
+  - lambda-Compute:
+      extends: "Compute"
+      description: null
+      properties: []
+      operations: []
+  - SoftwareApplication:
+      extends: "BaseType"
+      description: null
+      properties: []
+      operations: []
+  - apigateway-SoftwareApplication:
+      extends: "SoftwareApplication"
+      description: null
+      properties: []
+      operations: []
+  - DatabaseSystem:
+      extends: "SoftwareApplication"
+      description: null
+      properties: []
+      operations: []
+  - dynamodb-DatabaseSystem:
+      extends: "DatabaseSystem"
+      description: null
+      properties: []
+      operations: []
+relation_types:
+  - DependsOn:
+      extends: "-"
+      description: null
+      properties: []
+      operations: []
+  - HostedOn:
+      extends: "DependsOn"
+      description: null
+      properties: []
+      operations: []
+  - ConnectsTo:
+      extends: "DependsOn"
+      description: null
+      properties: []
+      operations: []
