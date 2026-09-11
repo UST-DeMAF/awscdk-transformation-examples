@@ -6,50 +6,73 @@ components:
       properties: []
       operations: []
       artifacts: []
+  - FargateServiceLBB353E155:
+      type: "elasticloadbalancingv2-SoftwareApplication"
+      description: null
+      properties:
+        - LoadBalancerAttributes:
+            "[{\"Key\":\"deletion_protection.enabled\",\"Value\"\
+            :\"false\"}]"
+        - LoadBalancerAttributes.0.Key: "deletion_protection.enabled"
+        - LoadBalancerAttributes.0.Value: "false"
+        - Scheme: "internet-facing"
+        - SecurityGroups: "FargateServiceLBSecurityGroup5F444C78"
+        - Subnets: "10.0.0.0/18,10.0.64.0/18"
+        - Type: "application"
+      operations: []
+      artifacts: []
   - FargateServiceTaskDef940E3A80:
       type: "ecs-SoftwareApplication"
       description: null
       properties:
-        - ContainerDefinitions: "[{\"Essential\":true,\"Image\":\"public.ecr.aws/nginx/nginx:latest\"\
+        - ContainerDefinitions:
+            "[{\"Essential\":true,\"Image\":\"public.ecr.aws/nginx/nginx:latest\"\
             ,\"LogConfiguration\":{\"LogDriver\":\"awslogs\",\"Options\":{\"awslogs-group\"\
             :{\"Ref\":\"FargateServiceTaskDefwebLogGroup71FAF541\"},\"awslogs-stream-prefix\"\
             :\"FargateService\",\"awslogs-region\":\"eu-central-1\"}},\"Name\":\"\
             web\",\"PortMappings\":[{\"ContainerPort\":80,\"Protocol\":\"tcp\"}]}]"
+        - ContainerDefinitions.0.Essential: "true"
+        - ContainerDefinitions.0.Image: "public.ecr.aws/nginx/nginx:latest"
+        - ContainerDefinitions.0.LogConfiguration.LogDriver: "awslogs"
+        - ContainerDefinitions.0.LogConfiguration.Options.awslogs-stream-prefix: "FargateService"
+        - ContainerDefinitions.0.LogConfiguration.Options.awslogs-region: "eu-central-1"
+        - ContainerDefinitions.0.Name: "web"
+        - ContainerDefinitions.0.PortMappings.0.ContainerPort: "80"
+        - ContainerDefinitions.0.PortMappings.0.Protocol: "tcp"
         - Cpu: "256"
         - Family: "EcsFargateStackFargateServiceTaskDef30B86891"
         - Memory: "512"
         - NetworkMode: "awsvpc"
-        - RequiresCompatibilities: "[\"FARGATE\"]"
+        - RequiresCompatibilities: '["FARGATE"]'
+        - RequiresCompatibilities.0: "FARGATE"
+        - artifactType: "docker_image"
+        - artifactUri: "public.ecr.aws/nginx/nginx:latest"
       operations: []
       artifacts: []
   - FargateServiceECC8084D:
       type: "ecs-SoftwareApplication"
       description: null
       properties:
-        - DeploymentConfiguration: "{\"MaximumPercent\":200,\"MinimumHealthyPercent\"\
+        - DeploymentConfiguration:
+            "{\"MaximumPercent\":200,\"MinimumHealthyPercent\"\
             :50}"
+        - DeploymentConfiguration.MaximumPercent: "200"
+        - DeploymentConfiguration.MinimumHealthyPercent: "50"
         - DesiredCount: "1"
         - EnableECSManagedTags: "false"
         - HealthCheckGracePeriodSeconds: "60"
         - LaunchType: "FARGATE"
-        - LoadBalancers: "[{\"ContainerName\":\"web\",\"ContainerPort\":80,\"TargetGroupArn\"\
+        - LoadBalancers:
+            "[{\"ContainerName\":\"web\",\"ContainerPort\":80,\"TargetGroupArn\"\
             :{\"Ref\":\"FargateServiceLBPublicListenerECSGroupBE57E081\"}}]"
-        - NetworkConfiguration: "{\"AwsvpcConfiguration\":{\"AssignPublicIp\":\"DISABLED\"\
+        - LoadBalancers.0.ContainerName: "web"
+        - LoadBalancers.0.ContainerPort: "80"
+        - NetworkConfiguration:
+            "{\"AwsvpcConfiguration\":{\"AssignPublicIp\":\"DISABLED\"\
             ,\"SecurityGroups\":[{\"Fn::GetAtt\":[\"FargateServiceSecurityGroup262B61DD\"\
             ,\"GroupId\"]}],\"Subnets\":[{\"Ref\":\"VpcPrivateSubnet1Subnet536B997A\"\
             },{\"Ref\":\"VpcPrivateSubnet2Subnet3788AAA1\"}]}}"
-      operations: []
-      artifacts: []
-  - FargateServiceLBB353E155:
-      type: "elasticloadbalancingv2-SoftwareApplication"
-      description: null
-      properties:
-        - LoadBalancerAttributes: "[{\"Key\":\"deletion_protection.enabled\",\"Value\"\
-            :\"false\"}]"
-        - Scheme: "internet-facing"
-        - SecurityGroups: "FargateServiceLBSecurityGroup5F444C78"
-        - Subnets: "10.0.0.0/18,10.0.64.0/18"
-        - Type: "application"
+        - NetworkConfiguration.AwsvpcConfiguration.AssignPublicIp: "DISABLED"
       operations: []
       artifacts: []
   - ClusterEB0386A7:
@@ -59,12 +82,13 @@ components:
       operations: []
       artifacts: []
 relations:
-  - FargateServiceECC8084D_ConnectsTo_FargateServiceTaskDef940E3A80:
+  - FargateServiceLBB353E155_ConnectsTo_FargateServiceECC8084D:
       type: "ConnectsTo"
       description: null
-      source: "FargateServiceECC8084D"
-      target: "FargateServiceTaskDef940E3A80"
-      properties: []
+      source: "FargateServiceLBB353E155"
+      target: "FargateServiceECC8084D"
+      properties:
+        - accessLevel: "invoke"
       operations: []
   - FargateServiceECC8084D_HostedOn_ClusterEB0386A7:
       type: "HostedOn"
@@ -73,17 +97,24 @@ relations:
       target: "ClusterEB0386A7"
       properties: []
       operations: []
-  - FargateServiceTaskDef940E3A80_HostedOn_aws:
-      type: "HostedOn"
+  - FargateServiceECC8084D_DependsOn_FargateServiceTaskDef940E3A80:
+      type: "DependsOn"
       description: null
-      source: "FargateServiceTaskDef940E3A80"
-      target: "aws"
+      source: "FargateServiceECC8084D"
+      target: "FargateServiceTaskDef940E3A80"
       properties: []
       operations: []
   - FargateServiceLBB353E155_HostedOn_aws:
       type: "HostedOn"
       description: null
       source: "FargateServiceLBB353E155"
+      target: "aws"
+      properties: []
+      operations: []
+  - FargateServiceTaskDef940E3A80_HostedOn_aws:
+      type: "HostedOn"
+      description: null
+      source: "FargateServiceTaskDef940E3A80"
       target: "aws"
       properties: []
       operations: []
@@ -140,22 +171,17 @@ component_types:
       description: null
       properties: []
       operations: []
-  - PaaS:
-      extends: "Platform"
-      description: null
-      properties: []
-      operations: []
   - Compute:
       extends: "BaseType"
       description: null
       properties: []
       operations: []
-  - ecs-SoftwareApplication:
+  - elasticloadbalancingv2-SoftwareApplication:
       extends: "SoftwareApplication"
       description: null
       properties: []
       operations: []
-  - elasticloadbalancingv2-SoftwareApplication:
+  - ecs-SoftwareApplication:
       extends: "SoftwareApplication"
       description: null
       properties: []

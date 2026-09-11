@@ -10,31 +10,47 @@ components:
       type: "s3-Storage"
       description: null
       properties:
-        - Tags: "[{\"Key\":\"aws-cdk:auto-delete-objects\",\"Value\":\"true\"}]"
+        - Tags: '[{"Key":"aws-cdk:auto-delete-objects","Value":"true"}]'
+        - Tags.0.Key: "aws-cdk:auto-delete-objects"
+        - Tags.0.Value: "true"
       operations: []
       artifacts: []
   - Classifications0C921F6C:
       type: "dynamodb-DatabaseSystem"
       description: null
       properties:
-        - AttributeDefinitions: "[{\"AttributeName\":\"image_name\",\"AttributeType\"\
+        - AttributeDefinitions:
+            "[{\"AttributeName\":\"image_name\",\"AttributeType\"\
             :\"S\"}]"
-        - KeySchema: "[{\"AttributeName\":\"image_name\",\"KeyType\":\"HASH\"}]"
-        - ProvisionedThroughput: "{\"ReadCapacityUnits\":5,\"WriteCapacityUnits\"\
+        - AttributeDefinitions.0.AttributeName: "image_name"
+        - AttributeDefinitions.0.AttributeType: "S"
+        - KeySchema: '[{"AttributeName":"image_name","KeyType":"HASH"}]'
+        - KeySchema.0.AttributeName: "image_name"
+        - KeySchema.0.KeyType: "HASH"
+        - ProvisionedThroughput:
+            "{\"ReadCapacityUnits\":5,\"WriteCapacityUnits\"\
             :5}"
+        - ProvisionedThroughput.ReadCapacityUnits: "5"
+        - ProvisionedThroughput.WriteCapacityUnits: "5"
       operations: []
       artifacts: []
   - RekFunction9837D13D:
       type: "lambda-Compute"
       description: null
       properties:
-        - Code: "{\"S3Bucket\":\"cdk-hnb659fds-assets-123456789012-eu-central-1\"\
+        - Code:
+            "{\"S3Bucket\":\"cdk-hnb659fds-assets-123456789012-eu-central-1\"\
             ,\"S3Key\":\"7604437bf41e8ceccf8c2ca2c17b8aa7ef4d3e46d31e1a96cca4ead1886dd3f4.zip\"\
             }"
-        - Environment: "{\"Variables\":{\"BUCKET_NAME\":{\"Ref\":\"Bucket83908E77\"\
+        - Code.S3Bucket: "cdk-hnb659fds-assets-123456789012-eu-central-1"
+        - Code.S3Key: "7604437bf41e8ceccf8c2ca2c17b8aa7ef4d3e46d31e1a96cca4ead1886dd3f4.zip"
+        - Environment:
+            "{\"Variables\":{\"BUCKET_NAME\":{\"Ref\":\"Bucket83908E77\"\
             },\"TABLE_NAME\":{\"Ref\":\"Classifications0C921F6C\"}}}"
         - Handler: "rekfunction.handler"
         - Runtime: "nodejs24.x"
+        - artifactType: "file"
+        - artifactUri: "s3://cdk-hnb659fds-assets-123456789012-eu-central-1/7604437bf41e8ceccf8c2ca2c17b8aa7ef4d3e46d31e1a96cca4ead1886dd3f4.zip"
       operations: []
       artifacts: []
 relations:

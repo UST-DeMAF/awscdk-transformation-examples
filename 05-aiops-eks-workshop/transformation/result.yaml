@@ -11,11 +11,15 @@ components:
       description: null
       properties:
         - AmiType: "AL2023_x86_64_STANDARD"
-        - ClusterName: "{\"Ref\":\"eksaiops16A19920\"}"
+        - ClusterName: '{"Ref":"eksaiops16A19920"}'
         - ForceUpdateEnabled: "true"
-        - InstanceTypes: "[\"m5.large\"]"
+        - InstanceTypes: '["m5.large"]'
+        - InstanceTypes.0: "m5.large"
         - NodegroupName: "mng-ondemand"
-        - ScalingConfig: "{\"DesiredSize\":2,\"MaxSize\":4,\"MinSize\":1}"
+        - ScalingConfig: '{"DesiredSize":2,"MaxSize":4,"MinSize":1}'
+        - ScalingConfig.DesiredSize: "2"
+        - ScalingConfig.MaxSize: "4"
+        - ScalingConfig.MinSize: "1"
         - Subnets: "10.0.96.0/19,10.0.128.0/19,10.0.160.0/19"
         - DependsOn: "eksaiopsvpcRestrictDefaultSecurityGroupCustomResource5ADE4981"
         - DependsOn: "10.0.96.0/19"

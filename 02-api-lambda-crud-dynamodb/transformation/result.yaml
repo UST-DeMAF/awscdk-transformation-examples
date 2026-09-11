@@ -17,11 +17,19 @@ components:
       type: "dynamodb-DatabaseSystem"
       description: null
       properties:
-        - AttributeDefinitions: "[{\"AttributeName\":\"itemId\",\"AttributeType\"\
+        - AttributeDefinitions:
+            "[{\"AttributeName\":\"itemId\",\"AttributeType\"\
             :\"S\"}]"
-        - KeySchema: "[{\"AttributeName\":\"itemId\",\"KeyType\":\"HASH\"}]"
-        - ProvisionedThroughput: "{\"ReadCapacityUnits\":5,\"WriteCapacityUnits\"\
+        - AttributeDefinitions.0.AttributeName: "itemId"
+        - AttributeDefinitions.0.AttributeType: "S"
+        - KeySchema: '[{"AttributeName":"itemId","KeyType":"HASH"}]'
+        - KeySchema.0.AttributeName: "itemId"
+        - KeySchema.0.KeyType: "HASH"
+        - ProvisionedThroughput:
+            "{\"ReadCapacityUnits\":5,\"WriteCapacityUnits\"\
             :5}"
+        - ProvisionedThroughput.ReadCapacityUnits: "5"
+        - ProvisionedThroughput.WriteCapacityUnits: "5"
         - TableName: "items"
       operations: []
       artifacts: []
@@ -29,65 +37,100 @@ components:
       type: "lambda-Compute"
       description: null
       properties:
-        - Code: "{\"S3Bucket\":\"cdk-hnb659fds-assets-123456789012-eu-central-1\"\
+        - Code:
+            "{\"S3Bucket\":\"cdk-hnb659fds-assets-123456789012-eu-central-1\"\
             ,\"S3Key\":\"de3118e0c715a3f39bc8b5a010bbe7ce29eb0ca04dab3aec1a32e6a75a92e160.zip\"\
             }"
-        - Environment: "{\"Variables\":{\"PRIMARY_KEY\":\"itemId\",\"TABLE_NAME\"\
+        - Code.S3Bucket: "cdk-hnb659fds-assets-123456789012-eu-central-1"
+        - Code.S3Key: "de3118e0c715a3f39bc8b5a010bbe7ce29eb0ca04dab3aec1a32e6a75a92e160.zip"
+        - Environment:
+            "{\"Variables\":{\"PRIMARY_KEY\":\"itemId\",\"TABLE_NAME\"\
             :{\"Ref\":\"items07D08F4B\"}}}"
+        - Environment.Variables.PRIMARY_KEY: "itemId"
         - Handler: "index.handler"
         - Runtime: "nodejs24.x"
+        - artifactType: "file"
+        - artifactUri: "s3://cdk-hnb659fds-assets-123456789012-eu-central-1/de3118e0c715a3f39bc8b5a010bbe7ce29eb0ca04dab3aec1a32e6a75a92e160.zip"
       operations: []
       artifacts: []
   - getAllItemsFunction0B7A913E:
       type: "lambda-Compute"
       description: null
       properties:
-        - Code: "{\"S3Bucket\":\"cdk-hnb659fds-assets-123456789012-eu-central-1\"\
+        - Code:
+            "{\"S3Bucket\":\"cdk-hnb659fds-assets-123456789012-eu-central-1\"\
             ,\"S3Key\":\"54501532bd0395f392db7b9ab2df9416c8e31b02cf88ee99d2d8bc19e79a3eff.zip\"\
             }"
-        - Environment: "{\"Variables\":{\"PRIMARY_KEY\":\"itemId\",\"TABLE_NAME\"\
+        - Code.S3Bucket: "cdk-hnb659fds-assets-123456789012-eu-central-1"
+        - Code.S3Key: "54501532bd0395f392db7b9ab2df9416c8e31b02cf88ee99d2d8bc19e79a3eff.zip"
+        - Environment:
+            "{\"Variables\":{\"PRIMARY_KEY\":\"itemId\",\"TABLE_NAME\"\
             :{\"Ref\":\"items07D08F4B\"}}}"
+        - Environment.Variables.PRIMARY_KEY: "itemId"
         - Handler: "index.handler"
         - Runtime: "nodejs24.x"
+        - artifactType: "file"
+        - artifactUri: "s3://cdk-hnb659fds-assets-123456789012-eu-central-1/54501532bd0395f392db7b9ab2df9416c8e31b02cf88ee99d2d8bc19e79a3eff.zip"
       operations: []
       artifacts: []
   - deleteItemFunction2918B1B0:
       type: "lambda-Compute"
       description: null
       properties:
-        - Code: "{\"S3Bucket\":\"cdk-hnb659fds-assets-123456789012-eu-central-1\"\
+        - Code:
+            "{\"S3Bucket\":\"cdk-hnb659fds-assets-123456789012-eu-central-1\"\
             ,\"S3Key\":\"d4ef1b4980482782b0e93da38303c325fc03a2b2a4da31d7ceca0d4d23b0fa54.zip\"\
             }"
-        - Environment: "{\"Variables\":{\"PRIMARY_KEY\":\"itemId\",\"TABLE_NAME\"\
+        - Code.S3Bucket: "cdk-hnb659fds-assets-123456789012-eu-central-1"
+        - Code.S3Key: "d4ef1b4980482782b0e93da38303c325fc03a2b2a4da31d7ceca0d4d23b0fa54.zip"
+        - Environment:
+            "{\"Variables\":{\"PRIMARY_KEY\":\"itemId\",\"TABLE_NAME\"\
             :{\"Ref\":\"items07D08F4B\"}}}"
+        - Environment.Variables.PRIMARY_KEY: "itemId"
         - Handler: "index.handler"
         - Runtime: "nodejs24.x"
+        - artifactType: "file"
+        - artifactUri: "s3://cdk-hnb659fds-assets-123456789012-eu-central-1/d4ef1b4980482782b0e93da38303c325fc03a2b2a4da31d7ceca0d4d23b0fa54.zip"
       operations: []
       artifacts: []
   - createItemFunction8D47E48A:
       type: "lambda-Compute"
       description: null
       properties:
-        - Code: "{\"S3Bucket\":\"cdk-hnb659fds-assets-123456789012-eu-central-1\"\
+        - Code:
+            "{\"S3Bucket\":\"cdk-hnb659fds-assets-123456789012-eu-central-1\"\
             ,\"S3Key\":\"1b413f3454e19bed30ae14d06913bad1865512e51b2e1203843c07aef6db955b.zip\"\
             }"
-        - Environment: "{\"Variables\":{\"PRIMARY_KEY\":\"itemId\",\"TABLE_NAME\"\
+        - Code.S3Bucket: "cdk-hnb659fds-assets-123456789012-eu-central-1"
+        - Code.S3Key: "1b413f3454e19bed30ae14d06913bad1865512e51b2e1203843c07aef6db955b.zip"
+        - Environment:
+            "{\"Variables\":{\"PRIMARY_KEY\":\"itemId\",\"TABLE_NAME\"\
             :{\"Ref\":\"items07D08F4B\"}}}"
+        - Environment.Variables.PRIMARY_KEY: "itemId"
         - Handler: "index.handler"
         - Runtime: "nodejs24.x"
+        - artifactType: "file"
+        - artifactUri: "s3://cdk-hnb659fds-assets-123456789012-eu-central-1/1b413f3454e19bed30ae14d06913bad1865512e51b2e1203843c07aef6db955b.zip"
       operations: []
       artifacts: []
   - updateItemFunction59415205:
       type: "lambda-Compute"
       description: null
       properties:
-        - Code: "{\"S3Bucket\":\"cdk-hnb659fds-assets-123456789012-eu-central-1\"\
+        - Code:
+            "{\"S3Bucket\":\"cdk-hnb659fds-assets-123456789012-eu-central-1\"\
             ,\"S3Key\":\"93d3c5b519ac25921c2ef5a778fe63a207120b4c51d8d81cf66e2dd566cfd275.zip\"\
             }"
-        - Environment: "{\"Variables\":{\"PRIMARY_KEY\":\"itemId\",\"TABLE_NAME\"\
+        - Code.S3Bucket: "cdk-hnb659fds-assets-123456789012-eu-central-1"
+        - Code.S3Key: "93d3c5b519ac25921c2ef5a778fe63a207120b4c51d8d81cf66e2dd566cfd275.zip"
+        - Environment:
+            "{\"Variables\":{\"PRIMARY_KEY\":\"itemId\",\"TABLE_NAME\"\
             :{\"Ref\":\"items07D08F4B\"}}}"
+        - Environment.Variables.PRIMARY_KEY: "itemId"
         - Handler: "index.handler"
         - Runtime: "nodejs24.x"
+        - artifactType: "file"
+        - artifactUri: "s3://cdk-hnb659fds-assets-123456789012-eu-central-1/93d3c5b519ac25921c2ef5a778fe63a207120b4c51d8d81cf66e2dd566cfd275.zip"
       operations: []
       artifacts: []
 relations:
@@ -115,6 +158,14 @@ relations:
       properties:
         - accessLevel: "invoke"
       operations: []
+  - itemsApi28111E1C_ConnectsTo_updateItemFunction59415205:
+      type: "ConnectsTo"
+      description: null
+      source: "itemsApi28111E1C"
+      target: "updateItemFunction59415205"
+      properties:
+        - accessLevel: "invoke"
+      operations: []
   - itemsApi28111E1C_ConnectsTo_getOneItemFunctionE3257B22:
       type: "ConnectsTo"
       description: null
@@ -136,14 +187,6 @@ relations:
       description: null
       source: "itemsApi28111E1C"
       target: "deleteItemFunction2918B1B0"
-      properties:
-        - accessLevel: "invoke"
-      operations: []
-  - itemsApi28111E1C_ConnectsTo_updateItemFunction59415205:
-      type: "ConnectsTo"
-      description: null
-      source: "itemsApi28111E1C"
-      target: "updateItemFunction59415205"
       properties:
         - accessLevel: "invoke"
       operations: []
